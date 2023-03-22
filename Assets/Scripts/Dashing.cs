@@ -32,10 +32,16 @@ public class Dashing : MonoBehaviour
     {
         if (Input.GetKeyDown(dashKey))
         Dash();
+
+        if (dashCdTime > 0)
+            dashCdTime -= Time.deltaTime;
     }
 
     private void Dash()
     {
+        if (dashCdTime > 0) return;
+        else dashCdTime = dashCd;
+
         Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
 
         rb.AddForce(forceToApply, ForceMode.Impulse);

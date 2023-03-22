@@ -80,4 +80,6 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(invincCooldown);
         invincibleEnabled = false;
     }
-}
+
+    }
+
