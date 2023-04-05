@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f4da144b4fd6cfd4f91d1e1bc7dd6e4c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Sinkin Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3286bc1731c422345bce5fdc8ba99bb0, type: 3}
+  - {fileID: 12800000, guid: 34231f3f31e73944ab2544911e6d724d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

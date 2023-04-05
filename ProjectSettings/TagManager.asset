@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PickUp
   - Enemy
+  - PickUp
   layers:
   - Default
   - TransparentFX
@@ -13,8 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Character
-  - PostProcessing
+  - Player
+  - Grapple
+  - Enemy
   - 
   - 
   - 
@@ -29,8 +30,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Lighting
   - 
   - 
   - 
