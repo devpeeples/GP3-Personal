@@ -17443,7 +17443,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b,
         type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f8e0c5724281a594ca507b76e88dcf59, type: 3}
+    - target: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b,
+        type: 3}
+      propertyPath: sounds.Array.data[9].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b,
+        type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: Walking
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b,
+        type: 3}
       propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b,
+        type: 3}
+      propertyPath: sounds.Array.data[9].volume
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -103344,6 +103364,16 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1721398647}
+    - target: {fileID: 3692219798782693863, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 52211853}
+    - target: {fileID: 3692219798782693863, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+        type: 3}
+      propertyPath: audioManagerObject
+      value: 
+      objectReference: {fileID: 1514545548}
     - target: {fileID: 3692219798782693864, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
         type: 3}
       propertyPath: m_Name

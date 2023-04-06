@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public float masterVolume;
+     public float masterVolume;
     public Sound[] sounds;
     void Awake()
     {

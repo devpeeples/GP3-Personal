@@ -6,17 +6,20 @@ using UnityEngine;
 
 public class RBPlayerShooting : MonoBehaviour
 {
-    public GameObject audioManagerObject;
     public GameObject bullet;
     public float shotSpeed;
 
     private GameObject shot;
-    private AudioManager audioManager;
     public float fireRate;
     public float delayRate;
     private bool isShooting = false;
 
     public bool isShotgun;
+    //audio
+    public GameObject audioManagerObject;
+    public AudioManager audioManager;
+
+
 
     void Start()
     {

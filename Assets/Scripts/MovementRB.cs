@@ -45,6 +45,7 @@ public class MovementRB : MonoBehaviour
         {
             //animate run state 
             anim.SetBool("isMoving", true);
+
             //sound of walking
             
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
@@ -52,8 +53,8 @@ public class MovementRB : MonoBehaviour
         }
         else
         {
-            am.Play("SandStep");
-            //am.Stop("SandStep");
+            am.Play("Walking");
+            am.Stop("Walking");
             anim.SetBool("isMoving", false);
             //animate idle state
             //no sound of walking
