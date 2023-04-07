@@ -10,14 +10,10 @@ public class RBPlayerShooting : MonoBehaviour
     public float shotSpeed;
 
     private GameObject shot;
-    public float fireRate;
-    public float delayRate;
-    private bool isShooting = false;
-
-    public bool isShotgun;
     //audio
-     public AudioSource source;
+    public AudioSource source;
     public AudioClip clip; 
+
 
 
     void Start()
@@ -26,37 +22,19 @@ public class RBPlayerShooting : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButton("Shoot"))
+        if (Input.GetButtonDown("Shoot"))
         {
             source.PlayOneShot(clip);
-            trueShoot();
-            InvokeRepeating("RbPlayerShoot", delayRate, fireRate);
-            //isShooting = true; 
-            //RbPlayerShoot();
-        }
-
-        if (Input.GetButtonUp("Shoot"))
-        {
-            falseShoot();
+            RbPlayerShoot();
         }
             
-    }
-    void trueShoot(){
-        isShooting = true; 
-    }
-    void falseShoot(){
-        isShooting = false; 
     }
 
     void RbPlayerShoot()
     {
-        if (isShooting){
-            shot = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-            shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * shotSpeed);
-            //isShooting = false; 
-            //Invoke(delayMethod, fireRate);
-
-        }        
+       
+        shot = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * shotSpeed);
+        
     }
-
 }

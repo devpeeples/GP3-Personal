@@ -18,8 +18,9 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     public ChargeBar chargeBar;
     public BubbleDash bubbleDash;
-    public AudioManager audioManager;
-
+    //audio
+    public AudioSource source;
+    public AudioClip clip;
     void Start()
     {
         currentHealth = maxHealth;
@@ -36,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!bubbleDash.isInvincible)
         {
-            audioManager.Play("PlayerHit");
+            source.PlayOneShot(clip);
             currentHealth -= damage;
 
             healthBar.SetHealth(currentHealth);

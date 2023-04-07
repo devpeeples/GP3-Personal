@@ -12,8 +12,8 @@ public class Shooter : MonoBehaviour
     public float shotSpeed;
     private GameObject shot;
     //audio
-    public GameObject audioManagerObject; 
-    public AudioManager audioManager;
+    public AudioSource source;
+    public AudioClip clip;
 
 
 
@@ -28,8 +28,9 @@ public class Shooter : MonoBehaviour
         transform.LookAt(player);
     }
     void Shoot(){
-        if(gameObject.active){
-            audioManagerObject.GetComponent<AudioManager>().Play("EnemyBullet");
+        if(gameObject.active)
+        {
+            source.PlayOneShot(clip);
             shot = Instantiate(bullet,transform.position,transform.rotation);
             shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*shotSpeed);
         }

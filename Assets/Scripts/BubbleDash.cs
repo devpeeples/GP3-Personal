@@ -8,7 +8,6 @@ public class BubbleDash : MonoBehaviour
     public Transform orientation;
     public Transform playerCam;
     private Rigidbody rb;
-    public AudioManager aM;
 
     [Header("Bool States")]
     public bool isDashing;
@@ -24,6 +23,9 @@ public class BubbleDash : MonoBehaviour
     [Header("Cooldown")]
     public float dashCd;
     private float dashCdTime;
+    //audio
+    public AudioSource source;
+    public AudioClip clip; 
 
     
     // Start is called before the first frame update
@@ -47,7 +49,7 @@ public class BubbleDash : MonoBehaviour
     private void Dash()
     {
         // disable player movement? 
-        aM.Play("Dashing");
+        source.PlayOneShot(clip);
         if (dashCdTime > 0) return;
         else dashCdTime = dashCd;
 

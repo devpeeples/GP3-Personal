@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7412252464806356706
 Transform:
   m_ObjectHideFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7412252464806356716}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.2800274, y: -0.57, z: 1.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -138,6 +138,8 @@ MonoBehaviour:
   maxCurrencyOffset: {x: 1, y: 0, z: 1}
   plane: 1
   health: 20
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4eb5086dc462c6946be85ac79b6769cf, type: 3}
 --- !u!114 &1453997271395088945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,12 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5533569634813336240, guid: 07c03794aa1e3694f8bd7cdaecfacd4e, type: 3}
-  player: {fileID: 3692219798782693859, guid: 7ea8f416b1cc4d54f84c38c1b6e02374, type: 3}
+  player: {fileID: 0}
   spawnRate: 0.7
   spawnDelay: 0.01
   shotSpeed: 2000
-  audioManagerObject: {fileID: 8646079335741552870, guid: 428b736c1c5853342a65b3705acfc30b,
-    type: 3}
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4bf1580dba1b3984fb6e603cfe8d0ce1, type: 3}
 --- !u!1001 &7009958392405924234
 PrefabInstance:
   m_ObjectHideFlags: 0
