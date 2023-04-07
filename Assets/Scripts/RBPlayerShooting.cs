@@ -16,9 +16,8 @@ public class RBPlayerShooting : MonoBehaviour
 
     public bool isShotgun;
     //audio
-    public GameObject audioManagerObject;
-    public AudioManager audioManager;
-
+     public AudioSource source;
+    public AudioClip clip; 
 
 
     void Start()
@@ -29,7 +28,7 @@ public class RBPlayerShooting : MonoBehaviour
     {
         if (Input.GetButton("Shoot"))
         {
-            audioManagerObject.GetComponent<AudioManager>().Play("PlayerBullet");
+            source.PlayOneShot(clip);
             trueShoot();
             InvokeRepeating("RbPlayerShoot", delayRate, fireRate);
             //isShooting = true; 

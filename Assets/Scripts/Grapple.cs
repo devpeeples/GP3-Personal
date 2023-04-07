@@ -29,8 +29,9 @@ public class Grapple : MonoBehaviour
 
     private bool withController = false;
 
-    //public AudioManager am;
-    public GameObject audioManagerObject;
+    //audio
+    public AudioSource source;
+    public AudioClip clip; 
 
     string[] joystick;
 
@@ -73,8 +74,8 @@ public class Grapple : MonoBehaviour
         //this is the raycast for mouse to test if you want to grapple
         if (Input.GetButton("Grapple"))
         {
-            audioManagerObject.GetComponent<AudioManager>().Play("GrapplingHook");
-            //am.Play("GrapplingHook");
+            source.PlayOneShot(clip);
+
             if (Physics.Raycast(transform.position, transform.forward, out objectHit, 40, grapple))
             {
 
@@ -88,9 +89,7 @@ public class Grapple : MonoBehaviour
             }
             else if (Physics.Raycast(transform.position, transform.forward, out objectHit, 40, enemy))
             {
-                //am.Play("GrapplingHook");
-                audioManagerObject.GetComponent<AudioManager>().Play("GrapplingHook");
-
+                source.PlayOneShot(clip);
                 this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
 
 
@@ -113,8 +112,7 @@ public class Grapple : MonoBehaviour
         }
         if (Input.GetAxisRaw("Joystick Grapple") > 0)
         {
-            //am.Play("GrapplingHook");
-            audioManagerObject.GetComponent<AudioManager>().Play("GrapplingHook");
+            source.PlayOneShot(clip);
 
             if (Physics.Raycast(transform.position, transform.forward, out objectHit, 40, grapple))
             {

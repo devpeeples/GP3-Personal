@@ -22,7 +22,8 @@ public class MovementRB : MonoBehaviour
     public BubbleDash bD;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Animator anim;
-    public AudioManager am; 
+    public AudioSource source;
+    public AudioClip clip; 
 
     // Start is called before the first frame update
     void Start()
@@ -45,16 +46,15 @@ public class MovementRB : MonoBehaviour
         {
             //animate run state 
             anim.SetBool("isMoving", true);
+            source.PlayOneShot(clip);
 
-            //sound of walking
+
             
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
         }
         else
         {
-            am.Play("Walking");
-            am.Stop("Walking");
             anim.SetBool("isMoving", false);
             //animate idle state
             //no sound of walking
