@@ -33,8 +33,7 @@ public class BubbleDash : MonoBehaviour
     {
         isDashing = false;
         isInvincible = false; 
-        rb = GetComponent<Rigidbody>();
-        
+        rb = GetComponent<Rigidbody>();        
     }
 
     void Update()

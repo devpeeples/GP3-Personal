@@ -111,3 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyValue: 5
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: d36b707b3cf25574d871954a6a5da5ee, type: 3}

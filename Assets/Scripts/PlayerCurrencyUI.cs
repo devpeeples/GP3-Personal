@@ -5,12 +5,9 @@ using UnityEngine;
 public class PlayerCurrencyUI : MonoBehaviour
 {
     public int totalCurrency;
-    public AudioManager am;
 
     public void addCurrency(int currency)
     {
-        //am.Play("Pickup");
-
         totalCurrency = totalCurrency + currency;
     }
     public void subtractCurrency(int currency)

@@ -22,9 +22,7 @@ public class AudioUtility : MonoBehaviour
             if(tracks.ContainsKey(trackTitle))
             {
                 audioSource.clip = tracks[trackTitle];
-                audioSource.Play();
-                //s.source.volume = masterVolume;
-            }
+                audioSource.Play();            }
             else
             {
                 Debug.Log($"Track: {trackTitle} does not exist");

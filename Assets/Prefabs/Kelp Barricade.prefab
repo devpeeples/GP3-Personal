@@ -58,7 +58,7 @@ Animation:
   m_GameObject: {fileID: 2046088843979537352}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 1b493cc6dc31ed4438fe5face4c6a545, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -112,10 +112,13 @@ MonoBehaviour:
   minCurrency: 0
   maxCurrency: 0
   isEnemy: 0
+  isBoss: 0
   currencyObj: {fileID: 0}
   maxCurrencyOffset: {x: 0, y: 0, z: 0}
   plane: 0
   health: 1
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4eb5086dc462c6946be85ac79b6769cf, type: 3}
 --- !u!1001 &2706372839542836659
 PrefabInstance:
   m_ObjectHideFlags: 0
