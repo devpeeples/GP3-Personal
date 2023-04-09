@@ -48,7 +48,6 @@ public class BubbleDash : MonoBehaviour
     private void Dash()
     {
         // disable player movement? 
-        source.PlayOneShot(clip);
         if (dashCdTime > 0) return;
         else dashCdTime = dashCd;
 
@@ -57,7 +56,7 @@ public class BubbleDash : MonoBehaviour
         Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
 
         rb.AddForce(forceToApply, ForceMode.Impulse);
-
+        source.Play();
         Invoke(nameof(ResetDash), dashDuration);
     }
 

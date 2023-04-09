@@ -74,7 +74,6 @@ public class Grapple : MonoBehaviour
         //this is the raycast for mouse to test if you want to grapple
         if (Input.GetButton("Grapple"))
         {
-            source.PlayOneShot(clip);
 
             if (Physics.Raycast(transform.position, transform.forward, out objectHit, 40, grapple))
             {
@@ -83,13 +82,13 @@ public class Grapple : MonoBehaviour
 
                 Debug.DrawRay(transform.position, transform.forward, Color.green);
                 vectorHit = objectHit.point;
+                source.Play();
                 canGrapple = true;
 
 
             }
             else if (Physics.Raycast(transform.position, transform.forward, out objectHit, 40, enemy))
             {
-                source.PlayOneShot(clip);
                 this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
 
 
