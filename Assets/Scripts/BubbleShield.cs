@@ -15,9 +15,9 @@ public class BubbleShield : MonoBehaviour
     {
         if (Input.GetButtonDown("BubbleShield"))
         {
-            source.PlayOneShot(clip);
             shield.gameObject.SetActive(true);
             Invoke("DownShield", shieldTime);
+            source.Play();
         }
     }
     void DownShield()

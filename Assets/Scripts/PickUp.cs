@@ -5,9 +5,11 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public int currencyValue;
-
-
     private PlayerCurrencyUI currencyScript = null;
+    //audio
+    public AudioSource source;
+    public AudioClip clip; 
+
     void OnTriggerEnter(Collider other)
     {
         //check if the one who enters the trigger has the player tag 

@@ -10,7 +10,7 @@ public class UrchinNoise : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    source.PlayOneShot(clip);
+    source.Play();
     }
 
     // Update is called once per frame
