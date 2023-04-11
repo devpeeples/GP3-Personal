@@ -22,11 +22,10 @@ public class EnemyHealth : MonoBehaviour
     private Vector3 currencyOffset;
     //audio
     public AudioSource source;
-    public AudioClip clip;
 
     public void TakeDamage(int bulletDamage)
     {
-        source.PlayOneShot(clip);
+        source.Play();
         health = health - bulletDamage;
         if(health <= 0)
         {

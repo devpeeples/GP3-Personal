@@ -31,8 +31,6 @@ public class Grapple : MonoBehaviour
 
     //audio
     public AudioSource source;
-    public AudioClip clip; 
-
     string[] joystick;
 
     void Start()
@@ -111,8 +109,6 @@ public class Grapple : MonoBehaviour
         }
         if (Input.GetAxisRaw("Joystick Grapple") > 0)
         {
-            source.PlayOneShot(clip);
-
             if (Physics.Raycast(transform.position, transform.forward, out objectHit, 40, grapple))
             {
 

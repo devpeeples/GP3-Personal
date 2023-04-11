@@ -30,7 +30,7 @@ public class Shooter : MonoBehaviour
     void Shoot(){
         if(gameObject.active)
         {
-            source.PlayOneShot(clip);
+            source.Play();
             shot = Instantiate(bullet,transform.position,transform.rotation);
             shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*shotSpeed);
         }
