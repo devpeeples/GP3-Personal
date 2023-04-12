@@ -33081,6 +33081,7 @@ GameObject:
   - component: {fileID: 703813491}
   - component: {fileID: 703813490}
   - component: {fileID: 703813489}
+  - component: {fileID: 703813494}
   m_Layer: 0
   m_Name: HealthPickupTester
   m_TagString: Untagged
@@ -33100,6 +33101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc41765836c62f49b5618db246221e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: {fileID: 703813494}
   source: {fileID: 1366590981}
   clip: {fileID: 8300000, guid: d36b707b3cf25574d871954a6a5da5ee, type: 3}
 --- !u!135 &703813490
@@ -33180,6 +33182,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &703813494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703813488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8affc0b68c01154db2730da34641227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  maxCharge: 10
+  currentCharge: 0
+  healthBar: {fileID: 0}
+  chargeBar: {fileID: 0}
+  bubbleDash: {fileID: 0}
+  source: {fileID: 0}
+  clip: {fileID: 0}
 --- !u!4 &704193612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 931376476888997336, guid: 479faa9e4df89404d93707a66d06979c,

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
+    public PlayerHealth currentHealth;
     //audio
     public AudioSource source;
     public AudioClip clip; 
 
     void OnTriggerEnter(Collider other)
     {
-        PlayerHealth health = other.GetComponent<PlayerHealth>();
+        //PlayerHealth health = other.GetComponent<PlayerHealth>();
         //HealthBar SetHealth other.gameObject.GetComponent<HealthBar>();
-        PlayerHealth currentHealth = other.GetComponent<PlayerHealth>();
+        //PlayerHealth currentHealth = other.GetComponent<PlayerHealth>();
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                if (health != null)
+               // if (health != null)
                 {
+                  //currentHealth =+ 10;
            // public int currentHealth
-           // (currentHealth >= 0)
                     {
            //     currentHealth =+ 1;
                         source.Play();
