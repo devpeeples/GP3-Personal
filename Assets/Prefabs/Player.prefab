@@ -51,11 +51,12 @@ MonoBehaviour:
     m_Bits: 128
   enemy:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   speed: 2
-  stunInvincibility: 0
+  stunInvincibility: 0.25
   player: {fileID: 3692219798782693859}
-  am: {fileID: 0}
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: fb3bc0b414a7d414f9c60cb4ddef92e9, type: 3}
 --- !u!65 &3692219797837624899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -197,11 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1384e1e0083d02e498fc922347567a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManagerObject: {fileID: 0}
   bullet: {fileID: 5533569634813336240, guid: 3979bb0d5f91aa045b5681808feeb5e1, type: 3}
   shotSpeed: 2000
-  fireRate: 0.5
-  delayRate: 0
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: 0f34b18e3a8c0db449a3dc795124d12c, type: 3}
 --- !u!1 &3692219798782693864
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3692219798782693864}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.9200001, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -260,8 +260,9 @@ MonoBehaviour:
   rotationSpeed: 2
   bD: {fileID: 3692219798782693856}
   rb: {fileID: 3692219798782693862}
-  anim: {fileID: 0}
-  am: {fileID: 0}
+  anim: {fileID: 3692219797746711614}
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: f8e0c5724281a594ca507b76e88dcf59, type: 3}
 --- !u!114 &3692219798782693856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,13 +277,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 3692219798782693859}
   playerCam: {fileID: 0}
-  aM: {fileID: 0}
   isDashing: 0
   isInvincible: 0
-  dashForce: 20
+  dashForce: 40
   dashUpwardForce: 0
-  dashDuration: 4
+  dashDuration: 1
   dashCd: 1.5
+  source: {fileID: 0}
 --- !u!54 &3692219798782693862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -311,14 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8affc0b68c01154db2730da34641227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  currentHealth: 0
-  maxCharge: 10
-  currentCharge: 0
+  health: {fileID: 0}
   healthBar: {fileID: 0}
   chargeBar: {fileID: 0}
   bubbleDash: {fileID: 3692219798782693856}
-  audioManager: {fileID: 0}
+  source: {fileID: 0}
 --- !u!114 &3692219798782693857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,8 +330,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 8082265533917063563}
-  shieldTime: 10
-  am: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b, type: 3}
+  shieldTime: 5
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: d3e0fbac29e059d42a9fdd3e2faedc8b, type: 3}
 --- !u!114 &3692219798782693887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalCurrency: 0
-  am: {fileID: 8646079335741552872, guid: 428b736c1c5853342a65b3705acfc30b, type: 3}
 --- !u!81 &3692219798782693884
 AudioListener:
   m_ObjectHideFlags: 0
@@ -415,7 +413,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalCurrency: 0
-  am: {fileID: 0}
 --- !u!1 &8082265533917063563
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +504,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8082265533917063563}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bce3396bb095de746b74bcc4197186ab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

@@ -17,7 +17,7 @@ public class EndScreen : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Level1"); //which level you want to restart to.
+        SceneManager.LoadScene("NotLevel1"); //which level you want to restart to.
     }
 
     public void MainMenu()

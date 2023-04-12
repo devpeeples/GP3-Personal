@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &542976117496711754
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113333245619956656, guid: 372970e62958ef04b83bb3ea12b202f9,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthPickUp
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9113333245619956659, guid: 372970e62958ef04b83bb3ea12b202f9, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 372970e62958ef04b83bb3ea12b202f9, type: 3}
+--- !u!1 &8786551097444983290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9113333245619956656, guid: 372970e62958ef04b83bb3ea12b202f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 542976117496711754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1611905248672444448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786551097444983290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc41765836c62f49b5618db246221e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: {fileID: 5219457225326346265}
+  healthIncrease: 0
+  healthBar: {fileID: 1994599660904221681}
+  source: {fileID: 0}
+--- !u!114 &1994599660904221681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786551097444983290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca28d673b18758499d9b52b20c97524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+--- !u!114 &5219457225326346265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786551097444983290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8affc0b68c01154db2730da34641227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthIncrease: {fileID: 1611905248672444448}
+  healthBar: {fileID: 1994599660904221681}
+  chargeBar: {fileID: 0}
+  bubbleDash: {fileID: 0}
+  source: {fileID: 0}

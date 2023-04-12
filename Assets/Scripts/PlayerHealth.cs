@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,22 +7,22 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Variables")]
-    public int maxHealth = 100;
-    [SerializeField] private int currentHealth;
+    public static int maxHealth = 100;
+    [SerializeField] public static int currentHealth;
 
     [Header("Charge Variables")]
-    public int maxCharge = 10;
-    [SerializeField] private int currentCharge;
+    public static int maxCharge = 10;
+    [SerializeField] public static int currentCharge;
 
 
     [Header("References")]
+    public HealthPickup healthIncrease;
     public HealthBar healthBar;
     public ChargeBar chargeBar;
     public BubbleDash bubbleDash;
     //audio
     public AudioSource source;
-    public AudioClip clip;
-    void Start()
+    public void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -37,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!bubbleDash.isInvincible)
         {
-            source.PlayOneShot(clip);
+            source.Play();
             currentHealth -= damage;
 
             healthBar.SetHealth(currentHealth);
@@ -46,10 +47,10 @@ public class PlayerHealth : MonoBehaviour
                 SceneManager.LoadScene("LoseScreen");
             }
         }
-        
     }
 
-    void UseCharge(int used)
+
+    public void UseCharge(int used)
     {
         currentCharge -= used;
 

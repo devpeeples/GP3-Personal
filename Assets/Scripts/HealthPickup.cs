@@ -5,53 +5,30 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour
 {
     public PlayerHealth currentHealth;
+    public int healthIncrease;
+    public HealthBar healthBar;
     //audio
     public AudioSource source;
-    public AudioClip clip; 
+
+    void Start()
+    {
+      healthIncrease = 10;
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        //PlayerHealth health = other.GetComponent<PlayerHealth>();
         //HealthBar SetHealth other.gameObject.GetComponent<HealthBar>();
         //PlayerHealth currentHealth = other.GetComponent<PlayerHealth>();
-        {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-               // if (health != null)
-                {
-                  //currentHealth =+ 10;
-           // public int currentHealth
-                    {
-           //     currentHealth =+ 1;
-                        source.Play();
-                    }
-                }
+              if (currentHealth != null)
+              {
+              PlayerHealth.currentHealth += healthIncrease;
+              source.Play();
+              Destroy(gameObject);
+              Debug.Log ("Health Increased");
+              }
+            
             }
-        }
     }
 }
-          //      Destroy(gameObject);
-      //      }
-    //    }
-   // }
-
-    // void OnTriggerEnter(Collider other)
-    //{
-        //check if the one who enters the trigger has the player tag 
-        //then check if the player can gather the pickup into a UI Variable 
-      //  if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-     //   {
-       //     PlayerHealth currentHealth = other.gameObject.GetComponent<PlayerHealth>();
-       //     //HealthBar SetHealth other.gameObject.GetComponent<HealthBar>();
-        //    //if (currentHealth >= 0)
-       //     {
-
-         //       Destroy(gameObject);
-
-       //     }
-  
-        //    }
-
-     //   }
-
-   // }
