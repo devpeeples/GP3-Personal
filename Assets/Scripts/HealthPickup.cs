@@ -6,29 +6,29 @@ public class HealthPickup : MonoBehaviour
 {
     //audio
     public AudioSource source;
-
-    public HealthBar healthBar;
+    public AudioClip clip; 
 
     void OnTriggerEnter(Collider other)
     {
-      
+        PlayerHealth health = other.GetComponent<PlayerHealth>();
+        //HealthBar SetHealth other.gameObject.GetComponent<HealthBar>();
+        PlayerHealth currentHealth = other.GetComponent<PlayerHealth>();
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                //  PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-                  //HealthBar SetHealth other.gameObject.GetComponent<HealthBar>();
-                 // PlayerHealth currentHealth = other.GetComponent<PlayerHealth>();
-                if (healthBar != null)
+                if (health != null)
                 {
-                 // playerHealth.increase
+           // public int currentHealth
+           // (currentHealth >= 0)
+                    {
+           //     currentHealth =+ 1;
                         source.Play();
-                        Destroy(gameObject);
                     }
                 }
             }
         }
     }
-
+}
           //      Destroy(gameObject);
       //      }
     //    }

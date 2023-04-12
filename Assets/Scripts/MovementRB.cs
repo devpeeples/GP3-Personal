@@ -23,6 +23,7 @@ public class MovementRB : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Animator anim;
     public AudioSource source;
+    public AudioClip clip; 
 
     // Start is called before the first frame update
     void Start()

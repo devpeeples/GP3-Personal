@@ -25,6 +25,7 @@ public class BubbleDash : MonoBehaviour
     private float dashCdTime;
     //audio
     public AudioSource source;
+    public AudioClip clip; 
 
     
     // Start is called before the first frame update

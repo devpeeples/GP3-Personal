@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     private PlayerCurrencyUI currencyScript = null;
     //audio
     public AudioSource source;
+    public AudioClip clip; 
 
     void OnTriggerEnter(Collider other)
     {
