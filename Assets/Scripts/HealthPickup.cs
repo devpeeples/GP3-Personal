@@ -17,8 +17,6 @@ public class HealthPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //HealthBar SetHealth other.gameObject.GetComponent<HealthBar>();
-        //PlayerHealth currentHealth = other.GetComponent<PlayerHealth>();
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
               if (currentHealth != null)

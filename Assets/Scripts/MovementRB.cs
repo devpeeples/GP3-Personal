@@ -21,9 +21,7 @@ public class MovementRB : MonoBehaviour
     [Header("References")]
     public BubbleDash bD;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Animator anim;
-    public AudioSource source;
-    public AudioClip clip; 
+    [SerializeField] private Animator anim; 
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +44,6 @@ public class MovementRB : MonoBehaviour
         {
             //animate run state 
             anim.SetBool("isMoving", true);
-            source.Play();
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
         }
