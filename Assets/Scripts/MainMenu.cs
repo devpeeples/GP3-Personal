@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     public GameObject controls;
     public GameObject keyboard;
     public GameObject controller;
+    //audio
+    public AudioSource source;
 
     private void Awake()
     {
@@ -45,6 +47,8 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(false);
         keyboard.SetActive(true);
         controller.SetActive(false);
+        source.Play();
+
     }
     
     public void Keyboard()
@@ -55,6 +59,8 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(false);
         keyboard.SetActive(true);
         controller.SetActive(false);
+        source.Play();
+
     }
 
     public void Controller()
@@ -65,6 +71,8 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(false);
         keyboard.SetActive(false);
         controller.SetActive(true);
+        source.Play();
+
     }
 
     public void SeeCreditsMenu()
@@ -75,6 +83,8 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(false);
         keyboard.SetActive(false);
         controller.SetActive(false);
+        source.Play();
+
     }
 
     public void SeeSettingsMenu()
@@ -85,6 +95,7 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(true);
         keyboard.SetActive(false);
         controller.SetActive(false);
+        source.Play();
     }
 
     public void Back()
@@ -95,6 +106,7 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(false);
         keyboard.SetActive(false);
         controller.SetActive(false);
+        source.Play();
     }
 
     

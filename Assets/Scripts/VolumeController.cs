@@ -11,9 +11,9 @@ public class VolumeController : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MasterVolume"))
+         if (PlayerPrefs.HasKey("MasterVolume") && PlayerPrefs.HasKey("MusicVolume") && PlayerPrefs.HasKey("SFXVolume"))
         {
-            LoadVolume("MasterVolume");
+            LoadVolume("MasterVolume", "MusicVolume", "SFXVolume");
         }
         else
         {
@@ -41,15 +41,15 @@ public class VolumeController : MonoBehaviour
         mixer.SetFloat("SFX", Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("SFXVolume", volume);
     }
-    private void LoadVolume(string v)
+    private void LoadVolume(string masterKey, string musicKey, string sfxKey)
     {
-        masterSlider.value=PlayerPrefs.GetFloat("MasterVolume");
+        masterSlider.value=PlayerPrefs.GetFloat(masterKey);
         SetMasterVolume();
 
-        musicSlider.value=PlayerPrefs.GetFloat("MusicVolume");
+        musicSlider.value=PlayerPrefs.GetFloat(musicKey);
         SetMusicVolume();
 
-        sfxSlider.value=PlayerPrefs.GetFloat("SFXVolume");
+        sfxSlider.value=PlayerPrefs.GetFloat(sfxKey);
         SetSFXVolume();
     }
 }
