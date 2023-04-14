@@ -53,4 +53,3 @@ public class VolumeController : MonoBehaviour
         SetSFXVolume();
     }
 }
-

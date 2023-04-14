@@ -13,6 +13,7 @@ public class Shooter : MonoBehaviour
     private GameObject shot;
     //audio
     public AudioSource source;
+    public AudioClip clip;
 
 
     void Start()
@@ -28,7 +29,7 @@ public class Shooter : MonoBehaviour
     void Shoot(){
         if(gameObject.active)
         {
-            source.Play();
+            source.PlayOneShot(clip);
             shot = Instantiate(bullet,transform.position,transform.rotation);
             shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*shotSpeed);
         }

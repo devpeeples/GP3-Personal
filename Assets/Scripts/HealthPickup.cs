@@ -12,7 +12,7 @@ public class HealthPickup : MonoBehaviour
 
     void Start()
     {
-      healthIncrease = 10;
+      healthIncrease = 25;
     }
 
     void OnTriggerEnter(Collider other)
