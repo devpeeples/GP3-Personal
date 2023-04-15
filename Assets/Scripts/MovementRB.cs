@@ -6,6 +6,7 @@ public class MovementRB : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
+    
     public float rotationSpeed;
 
 
@@ -14,7 +15,8 @@ public class MovementRB : MonoBehaviour
     private float xMove;
     private float zMove;
     private Vector3 movementDirection;
-
+    public float setSpeed;
+    public float setRotationSpeed; 
     
 
 
@@ -27,6 +29,8 @@ public class MovementRB : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setSpeed = speed;
+        setRotationSpeed = rotationSpeed; 
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
  

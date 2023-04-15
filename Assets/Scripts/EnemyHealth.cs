@@ -33,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
 
             if (isBoss)
             {
+                //load hub
                 SceneManager.LoadScene("WinScreen");
             }
 

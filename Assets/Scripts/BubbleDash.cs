@@ -6,47 +6,92 @@ public class BubbleDash : MonoBehaviour
 {
     [Header("References")]
     public Transform orientation;
-    public Transform playerCam;
     private Rigidbody rb;
     public AudioManager aM;
+
+    private PlayerHealth playerHealth;
+    private bool chargeCheck;
 
     [Header("Bool States")]
     public bool isDashing;
     public bool isInvincible;
-    
-   
+
+
 
     [Header("Dashing")]
     public float dashForce;
     public float dashUpwardForce;
+
+    //dash duration is what gets saved
     public float dashDuration;
+    public int dashCharge;
 
     [Header("Cooldown")]
     public float dashCd;
     private float dashCdTime;
 
+
+    /*
     
+    public void SaveDash()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+    public void LoadDash()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        totalCurrency = data.currency;
+    }
+    */
+
     // Start is called before the first frame update
+    void OnEnable()
+    {
+        //get component for the player health
+
+        playerHealth = GetComponent<PlayerHealth>();
+    }
     void Start()
     {
         isDashing = false;
-        isInvincible = false; 
+        isInvincible = false;
         rb = GetComponent<Rigidbody>();
-        
+
     }
 
     void Update()
     {
         if (Input.GetButtonDown("BubbleDash"))
-            Dash();
+        {
+            chargeCheck = playerHealth.ChargeCheck(dashCharge);
+            if (chargeCheck)
+            {
+                playerHealth.UseCharge(dashCharge);
+
+                Dash();
+
+            }
+        }
+
+
 
         if (dashCdTime > 0)
             dashCdTime -= Time.deltaTime;
     }
 
+
+    public void IncreaseDash(float amount)
+    {
+        dashDuration += amount;
+    }
+
     private void Dash()
     {
         // disable player movement? 
+        // check charge amount 
+        //use charge 
+
+
         aM.Play("Dashing");
         if (dashCdTime > 0) return;
         else dashCdTime = dashCd;
@@ -72,7 +117,7 @@ public class BubbleDash : MonoBehaviour
     }
     private void StopInvincibility()
     {
-        isInvincible = false; 
+        isInvincible = false;
     }
 
 

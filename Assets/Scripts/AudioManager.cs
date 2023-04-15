@@ -24,9 +24,13 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     {
         Sound s= Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
-        s.source.volume = masterVolume;
-        s.source.pitch = s.pitch;
+        if (s.source != null)
+        {
+            s.source.Play();
+            s.source.volume = masterVolume;
+            s.source.pitch = s.pitch;
+        }
+        
     }
     public void Stop(string name)
     {

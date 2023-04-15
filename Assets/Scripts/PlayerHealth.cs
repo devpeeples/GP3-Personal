@@ -48,10 +48,48 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    void UseCharge(int used)
+    public void UseCharge(int used)
     {
         currentCharge -= used;
 
         chargeBar.SetCharge(currentCharge);
     }
+
+    public void AddCharge(int chargeAdd)
+    {
+        if ((currentCharge + chargeAdd) <= maxCharge)
+        {
+
+            currentCharge += chargeAdd;
+            chargeBar.SetCharge(currentCharge);
+        }
+        else
+        {
+
+            // what else would you want to do if you dont add charge?
+        }
+
+    }
+    public void AddMaxCharge(int maxAdd)
+    {
+        maxCharge += maxAdd;
+    }
+
+
+    public bool ChargeCheck(int amount)
+    {
+        if (currentCharge < amount)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+
+
+
 }

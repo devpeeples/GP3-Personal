@@ -6,7 +6,25 @@ public class BubbleShield : MonoBehaviour
 {
     public GameObject shield;
     public float shieldTime;
-    public AudioManager am; 
+    public int shieldCharge;
+    public AudioManager am;
+
+    private PlayerHealth playerHealth;
+    private bool chargeCheck;
+
+
+    public void IncreaseTime(float amount)
+    {
+        shieldTime += amount;
+    }
+
+    void OnEnable()
+    {
+        //get component for the player health
+
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
 
 
     // Update is called once per frame
@@ -14,13 +32,26 @@ public class BubbleShield : MonoBehaviour
     {
         if (Input.GetButtonDown("BubbleShield"))
         {
-            am.Play("ShieldActivate");
-            shield.gameObject.SetActive(true);
-            Invoke("DownShield", shieldTime);
+            //check charge amount 
+            chargeCheck = playerHealth.ChargeCheck(shieldCharge);
+
+            if (chargeCheck)
+            {
+                playerHealth.UseCharge(shieldCharge);
+
+                am.Play("ShieldActivate");
+                shield.gameObject.SetActive(true);
+                Invoke("DownShield", shieldTime);
+
+            }
+
+
+
         }
     }
     void DownShield()
     {
+
         shield.gameObject.SetActive(false);
     }
 }
