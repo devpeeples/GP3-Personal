@@ -18,8 +18,13 @@ public class SceneLoader : MonoBehaviour
     {
         // Call the Save method in the GameManager before loading a new scene
         gameManager.SaveGameData();
+        SceneManager.LoadScene(sceneName);
+        gameManager.References();
+        gameManager.LoadGameData();
+        
+        
 
         // Load the specified scene
-        SceneManager.LoadScene(sceneName);
+      
     }
 }

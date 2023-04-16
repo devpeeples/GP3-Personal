@@ -9,6 +9,8 @@ public class Vortex1 : MonoBehaviour
     public bool level1;
     public bool level2;
     public bool level3;
+    public bool hub;
+    public SceneLoader sceneLoader; 
 
     private void OnCollisionEnter(Collision other)
     {
@@ -18,7 +20,8 @@ public class Vortex1 : MonoBehaviour
             Debug.Log("player");
             if (level1)
             {
-                SceneManager.LoadScene("Level1");
+                sceneLoader.CallLoadScene("Level1");
+                //SceneManager.LoadScene("Level1");
 
             }
             else if (level2)
@@ -29,10 +32,14 @@ public class Vortex1 : MonoBehaviour
             {
                 SceneManager.LoadScene("Level3");
             }
+            else if (hub)
+            {
+                SceneManager.LoadScene("PHub");
+            }
         }
         else
         {
-            Debug.Log("not player");
+           // Debug.Log("not player");
         }
         
 

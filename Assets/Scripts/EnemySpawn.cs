@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject[] enemyArray; 
+    public GameObject[] enemyArray;
+    private bool done = false;
 
+    private GameObject i;
 
-    private GameObject i; 
-   
     //on start open the list and record the game objects i
 
 
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            foreach (GameObject i in enemyArray)
+            if (!done)
             {
-                
-                    
-                if (!i.activeSelf)
+                foreach (GameObject i in enemyArray)
                 {
-                    i.SetActive(true);
-                }
+                    if (!i.activeSelf)
+                    {
 
-              
+                        i.SetActive(true);
+
+                    }
+
+
+                }
             }
-            
+            done = true;
+
         }
-    }  
+    }
 }

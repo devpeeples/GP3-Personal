@@ -8,7 +8,7 @@ public class SwitchWeapon : MonoBehaviour
     private PlayerShooting2 playerShooting2;
     public bool isSwitched; 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         
         playerShooting = this.gameObject.GetComponent<RBPlayerShooting>();
@@ -35,7 +35,7 @@ public class SwitchWeapon : MonoBehaviour
         }
         else
         {
-             Debug.Log(playerShooting);
+            //Debug.Log(playerShooting);
             playerShooting.enabled = true;
             playerShooting2.enabled = false;
         }

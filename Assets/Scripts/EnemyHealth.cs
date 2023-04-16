@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public int minCurrency;
     public int maxCurrency;
     public bool isEnemy;
+    public GameObject HubVortex; 
 
     public bool isBoss;
     public GameObject currencyObj;
@@ -34,7 +35,8 @@ public class EnemyHealth : MonoBehaviour
             if (isBoss)
             {
                 //load hub
-                SceneManager.LoadScene("WinScreen");
+                HubVortex.SetActive(true);
+                //SceneManager.LoadScene("WinScreen");
             }
 
             //delete the enemy from the enemy list 
@@ -62,6 +64,12 @@ public class EnemyHealth : MonoBehaviour
     private void CurrencyOffset()
     {
         currencyOffset = new Vector3(Random.Range(0, maxCurrencyOffset.x), Random.Range(0, maxCurrencyOffset.y), Random.Range(0, maxCurrencyOffset.z));
+    }
+
+    public void KillEnemy()
+    {
+        CurrencyDrop();
+        Destroy(gameObject);
     }
 
 }

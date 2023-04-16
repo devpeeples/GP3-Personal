@@ -1,10 +1,10 @@
-using UnityEngine.SceneManagement;
+
 using UnityEngine;
 
 
 public class LevelButtons : MonoBehaviour
 {
-    public SceneLoader sceneLoader;
+
     public GameObject level1Vortex;
     public GameObject level2Vortex;
     public GameObject level3Vortex; 

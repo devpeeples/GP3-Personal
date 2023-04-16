@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6913242950651188143}
   - component: {fileID: 6913242950651188136}
   - component: {fileID: 6913242950651188137}
+  - component: {fileID: 7381842266100288941}
+  - component: {fileID: 9017785781519239145}
   m_Layer: 0
   m_Name: Pufferfish
   m_TagString: Untagged
@@ -93,11 +95,48 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6913242950651188138}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7381842266100288941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913242950651188138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958b9dfa0ce5cb746a21858f2c5cd0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pufferfish: {fileID: 6913242950651188138}
+  explosion: {fileID: 3305634114549219146, guid: c803917507c4b32448d66406a10cdb6f,
+    type: 3}
+  anim: {fileID: 0}
+  range: 25
+--- !u!95 &9017785781519239145
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913242950651188138}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18e35128b254f8c43b1c45cd2e4e1cca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1841790010554406953
 PrefabInstance:
   m_ObjectHideFlags: 0
