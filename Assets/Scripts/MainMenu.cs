@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void SeeControlsMenu()
@@ -100,7 +100,7 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame()
     {
-        Debug.Log("Quit Successful!");
+        //Debug.Log("Quit Successful!");
         Application.Quit();
     }
 }

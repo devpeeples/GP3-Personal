@@ -18,9 +18,11 @@ public class NPCInteractable : MonoBehaviour
     private GameObject shopCrabObject; 
     public GameObject simpleObj;
     public GameObject complexObj;
-
+    private ShopButtons shopButtons; 
 
     public GameObject simpleShop;
+    private GameObject gameManagerObject;
+    private GameManager gameManager; 
   
 
 
@@ -47,8 +49,19 @@ public class NPCInteractable : MonoBehaviour
         }
         else if (shopCrab)
         {
-            shopCrabObject.SetActive(true);
 
+
+            shopCrabObject.SetActive(true);
+            if (Input.GetButtonDown("Interact"))
+            {
+                gameManagerObject = GameObject.FindWithTag("GameManager");
+                gameManager = gameManagerObject.GetComponent<GameManager>();
+                shopButtons = shopCrabObject.GetComponent<ShopButtons>();
+                gameManager.SaveGameData();
+                shopButtons.SaveShop();
+                shopCrabObject.SetActive(true);
+
+            }
         }
 
     }

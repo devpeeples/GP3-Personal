@@ -11,6 +11,10 @@ public class SceneLoader : MonoBehaviour
     private GameObject shopCrabParent;
     private GameObject shopCrabObject;
 
+
+
+
+
     private void Start()
     {
 
@@ -55,25 +59,79 @@ public class SceneLoader : MonoBehaviour
     public void CallLoadScene(string sceneNameString)
     {
         // Call the Save method in the GameManager before loading a new scene
-        gameManager.SaveGameData();
-        
-        if (sceneNameString == "PHUb")
+        if(sceneNameString != "Tutorial")
         {
-
-            shopCrabParents = GameObject.FindGameObjectsWithTag("ShopCrab");
-
-            shopCrabParent = shopCrabParents[0].gameObject;
-
-            shopCrabObject = shopCrabParent.transform.GetChild(0).gameObject;
-
-            shopButtons = shopCrabObject.GetComponent<ShopButtons>();
-            shopButtons.SaveShop();
             
+            gameManager.SaveGameData();
+
+            if (sceneNameString == "PHUb")
+            {
+
+                shopCrabParents = GameObject.FindGameObjectsWithTag("ShopCrab");
+
+                shopCrabParent = shopCrabParents[0].gameObject;
+
+                shopCrabObject = shopCrabParent.transform.GetChild(0).gameObject;
+
+                shopButtons = shopCrabObject.GetComponent<ShopButtons>();
+                shopButtons.SaveShop();
+
+            }
+            SceneManager.LoadScene(sceneNameString);
+            gameManager.References();
+            gameManager.LoadGameData();
+            shopButtons.LoadShop();
         }
-        SceneManager.LoadScene(sceneNameString);
-        gameManager.References();
-        gameManager.LoadGameData();
-        shopButtons.LoadShop();
+        else if (sceneNameString == "Tutorial")
+        {
+            if (!gameManager.CheckPlayerFile())
+            {
+                gameManager.SaveGameData();
+
+                if (sceneNameString == "PHUb")
+                {
+
+                    shopCrabParents = GameObject.FindGameObjectsWithTag("ShopCrab");
+
+                    shopCrabParent = shopCrabParents[0].gameObject;
+
+                    shopCrabObject = shopCrabParent.transform.GetChild(0).gameObject;
+
+                    shopButtons = shopCrabObject.GetComponent<ShopButtons>();
+                    shopButtons.SaveShop();
+
+                }
+                SceneManager.LoadScene(sceneNameString);
+                gameManager.References();
+                gameManager.LoadGameData();
+                shopButtons.LoadShop();
+            }
+
+            else if(gameManager.CheckPlayerFile())
+            {
+                
+
+                if (sceneNameString == "PHUb")
+                {
+
+                    shopCrabParents = GameObject.FindGameObjectsWithTag("ShopCrab");
+
+                    shopCrabParent = shopCrabParents[0].gameObject;
+
+                    shopCrabObject = shopCrabParent.transform.GetChild(0).gameObject;
+
+                    shopButtons = shopCrabObject.GetComponent<ShopButtons>();
+
+                }
+                SceneManager.LoadScene(sceneNameString);
+                gameManager.References();
+                gameManager.LoadGameData();
+                shopButtons.LoadShop();
+
+
+            }
+        }
+
         // Load the specified scene
 
     }

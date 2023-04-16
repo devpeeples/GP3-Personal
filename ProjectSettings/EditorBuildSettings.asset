@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PHub.unity
     guid: 653b1b447637c1b478bc3f7be8e0c5a8
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 966b46d3b92b3954bb661c27a58c18ef
   m_configObjects: {}
