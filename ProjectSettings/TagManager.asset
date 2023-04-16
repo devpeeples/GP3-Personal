@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - PickUp
   - Bullet
+  - Shrimp
+  - FallCrab
+  - ShopCrab
   layers:
   - Default
   - TransparentFX

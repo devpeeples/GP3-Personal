@@ -44,7 +44,7 @@ public class ShopData
         shield2button = boolToInt(shopButtons.isShield2On);
         shield3button = boolToInt(shopButtons.isShield3On);
 
-
+        
         dash1button = boolToInt(shopButtons.isDashOn);
         dash2button = boolToInt(shopButtons.isDash2On);
         dash3button = boolToInt(shopButtons.isDash3On);

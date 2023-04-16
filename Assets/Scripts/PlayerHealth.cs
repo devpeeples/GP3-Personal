@@ -20,6 +20,20 @@ public class PlayerHealth : MonoBehaviour
     public BubbleDash bubbleDash;
     public AudioManager audioManager;
 
+
+    public void resetCharge()
+    {
+        currentCharge = maxCharge;
+        
+        chargeBar.SetCharge(currentCharge);
+
+    }
+    public void resetHealth()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
+
+    }
     void Start()
     {
         currentHealth = maxHealth;

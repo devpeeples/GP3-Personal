@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
+    public bool CheckPlayerFile()
+    {
+        return SaveSystem.DoesFileExist("PlayerData");
+    }
     public void References() 
     { 
 
@@ -44,7 +48,7 @@ public class GameManager : MonoBehaviour
                 bubbleDash = playerObject.GetComponent<BubbleDash>();
                 bubbleShield = playerObject.GetComponent<BubbleShield>();
                 switchWeapon = playerObject.GetComponentInChildren<SwitchWeapon>();
-                Debug.Log(playerObject);
+                //Debug.Log(playerObject);
 
             }
             if (playerObject.GetComponent<PlayerCurrencyUI>() != null)
@@ -57,12 +61,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void DeleteGameData()
-    {
-        SaveSystem.DeletePlayer();
-        SaveSystem.DeleteShop();
-
-    }
+   
 
 
     public void SaveGameData()

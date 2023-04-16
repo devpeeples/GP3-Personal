@@ -10,7 +10,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
 
 
-        string path = Application.persistentDataPath + "/StopData.MinimaFan";
+        string path = Application.persistentDataPath + "/ShopData.MinimaFan";
         FileStream stream = new FileStream(path, FileMode.Create);
 
 
@@ -21,10 +21,23 @@ public static class SaveSystem
         stream.Close();
 
     }
+    public static bool DoesFileExist(string fileName)
+    {
+        string path = Application.persistentDataPath + "/" + fileName + ".MinimaFan";
+        if (File.Exists(path))
+        {
+            return true; 
+        }
+        else
+        {
+            return false; 
+        }
+    }
+
 
     public static ShopData LoadShop()
     {
-        string path = Application.persistentDataPath + "/StopData.MinimaFan";
+        string path = Application.persistentDataPath + "/ShopData.MinimaFan";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -89,7 +102,7 @@ public static class SaveSystem
 
     public static void DeletePlayer()
     {
-        string path = Application.persistentDataPath + "/Player.MinimaFan";
+        string path = Application.persistentDataPath + "/PlayerData.MinimaFan";
         if (File.Exists(path))
         {
             File.Delete(path);
@@ -105,7 +118,7 @@ public static class SaveSystem
 
     public static void DeleteShop()
     {
-        string path = Application.persistentDataPath + "/StopData.MinimaFan";
+        string path = Application.persistentDataPath + "/ShopData.MinimaFan";
         if (File.Exists(path))
         {
             File.Delete(path);

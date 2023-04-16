@@ -123,7 +123,10 @@ public class ShopButtons : MonoBehaviour
     public bool isWeaponOn = true;
 
 
-    //methods for saving
+    public bool CheckShopFile()
+    {
+        return SaveSystem.DoesFileExist("ShopData");
+    }
 
     public void SaveShop()
     {
@@ -198,8 +201,8 @@ public class ShopButtons : MonoBehaviour
 
     public void OnEnable()
     {
-        
 
+        LoadShop();
 
         ReverseInteractable(isGrappleOn, grappleButton1);
         ReverseInteractable(isGrapple2On, grappleButton2);
@@ -220,7 +223,6 @@ public class ShopButtons : MonoBehaviour
         ReverseInteractable(isWeaponOn, weaponButton1);
 
 
-        //Debug.Log("here: " + isGrappleOn);
 
         playerObjects = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerObject in playerObjects)
@@ -464,33 +466,6 @@ public class ShopButtons : MonoBehaviour
         }
     }
 
-
-    /*
-    private void ButtonSwitch(GameObject button1, GameObject button2, bool isCheck1, bool isCheck2)
-    {
-        // We need to change the bools in some way 
-        Debug.Log("button switch with 4 arg");
-        button1.GetComponent<Button>().interactable = false;
-        isCheck1 = false;
-        button2.GetComponent<Button>().interactable = true;
-        isCheck2 = true;
-
-        Debug.Log(isGrappleOn);
-        Debug.Log(isGrapple2On);
-    }
-
-
-
-    //method overloading >: ) 
-    private void ButtonSwitch(GameObject button1, bool isCheck1)
-    {
-        isCheck1 = false;
-        button1.GetComponent<Button>().interactable = false;
-    }
-
-    */
-    //comment this lower button switches out layer 
-
     private void ButtonSwitch(GameObject button1)
     {
         //isCheck1 = false;
@@ -503,19 +478,5 @@ public class ShopButtons : MonoBehaviour
         button2.GetComponent<Button>().interactable = true;
        
     }
-
-    /*
-    private void ButtonOnCheck(bool buttonCheck, GameObject button1)
-    {
-        if (buttonCheck)
-        {
-            button1.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            button1.GetComponent<Button>().interactable = false;
-        }
-    }
-    */
 
 }

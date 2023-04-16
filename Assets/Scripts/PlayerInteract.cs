@@ -11,20 +11,15 @@ public class PlayerInteract : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact"))
         {
-
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
             foreach(Collider collider in colliderArray)
             {
                 if (collider.TryGetComponent(out NPCInteractable npcInteractable))
                 {
-                    
-
                     gameObject.transform.LookAt(collider.transform);
                     npcInteractable.Interact();
                 }
             }
         }
-        
-        
     }
 }

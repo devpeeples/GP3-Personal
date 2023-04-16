@@ -19,6 +19,10 @@ public class UINext : MonoBehaviour
         isShowingNext = false; 
     }
     // Update is called once per frame
+    void OnDisable()
+    {
+        //this.isShowingNext = false; 
+    }
     void Update()
     {
         if (Input.GetButtonDown("Interact"))
