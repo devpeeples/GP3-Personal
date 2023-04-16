@@ -7,7 +7,10 @@ public class BubbleShield : MonoBehaviour
     public GameObject shield;
     public float shieldTime;
     public int shieldCharge;
-    public AudioManager am;
+    //public AudioManager am;
+
+    public AudioSource source;
+
 
     private PlayerHealth playerHealth;
     private bool chargeCheck;
@@ -39,7 +42,11 @@ public class BubbleShield : MonoBehaviour
             {
                 playerHealth.UseCharge(shieldCharge);
 
-                am.Play("ShieldActivate");
+                //am.Play("ShieldActivate");
+                if (source != null)
+                {
+                    source.Play();
+                }
                 shield.gameObject.SetActive(true);
                 Invoke("DownShield", shieldTime);
 

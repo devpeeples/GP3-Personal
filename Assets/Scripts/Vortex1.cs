@@ -47,11 +47,11 @@ public class Vortex1 : MonoBehaviour
             }
             else if (level2)
             {
-                SceneManager.LoadScene("Level2");
+                sceneLoader.CallLoadScene("Level2");
             }
             else if (level3)
             {
-                SceneManager.LoadScene("Level3");
+                sceneLoader.CallLoadScene("Level3");
             }
             else if (hub)
             {

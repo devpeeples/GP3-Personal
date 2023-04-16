@@ -7,7 +7,10 @@ public class BubbleDash : MonoBehaviour
     [Header("References")]
     public Transform orientation;
     private Rigidbody rb;
-    public AudioManager aM;
+
+    public AudioSource source;
+
+    //public AudioManager aM;
 
     private PlayerHealth playerHealth;
     private bool chargeCheck;
@@ -90,9 +93,12 @@ public class BubbleDash : MonoBehaviour
         // disable player movement? 
         // check charge amount 
         //use charge 
+        if (source != null)
+        {
+            source.Play();
+        }
 
-
-        aM.Play("Dashing");
+        //aM.Play("Dashing");
         if (dashCdTime > 0) return;
         else dashCdTime = dashCd;
 

@@ -32,7 +32,8 @@ public class Grapple : MonoBehaviour
     private PlayerHealth playerHealth;
     private bool chargeCheck;
 
-    public AudioManager am;
+    //public AudioManager am;
+    public AudioSource source;
 
     //stun time is what to save
     public float stunTime;
@@ -148,7 +149,7 @@ public class Grapple : MonoBehaviour
     public void GrappleAction()
     {
 
-        am.Play("GrapplingHook");
+        //am.Play("GrapplingHook");
         if (Physics.Raycast(transform.position, transform.forward, out objectHit, 200, grapple))
         {
 
@@ -157,6 +158,10 @@ public class Grapple : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward, Color.green);
             vectorHit = objectHit.point;
             canGrapple = true;
+            if (source != null)
+            {
+                source.Play();
+            }
 
 
         }
@@ -165,7 +170,7 @@ public class Grapple : MonoBehaviour
 
 
 
-            am.Play("GrapplingHook");
+            //am.Play("GrapplingHook");
 
 
             this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
@@ -183,6 +188,10 @@ public class Grapple : MonoBehaviour
 
             vectorHit = objectHit.point;
             canGrapple = true;
+            if (source != null)
+            {
+                source.Play();
+            }
 
 
         }

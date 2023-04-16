@@ -24,7 +24,7 @@ public class MovementRB : MonoBehaviour
     public BubbleDash bD;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Animator anim;
-    public AudioManager am; 
+    //public AudioManager am; 
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,7 @@ public class MovementRB : MonoBehaviour
         }
         else
         {
-            am.Play("SandStep");
+            //am.Play("SandStep");
             //am.Stop("SandStep");
             anim.SetBool("isMoving", false);
             //animate idle state

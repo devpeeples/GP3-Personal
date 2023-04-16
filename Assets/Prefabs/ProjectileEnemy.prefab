@@ -99,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.254476, y: 5.60576, z: 5.2129765}
-  m_Center: {x: 0.34117866, y: 2.302879, z: 0.39994097}
+  m_Size: {x: 4.1548157, y: 7.281119, z: 6.1815186}
+  m_Center: {x: -3.2337189, y: 0.8376796, z: -1.4333954}
 --- !u!54 &7412252464806356718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   minCurrency: 1
   maxCurrency: 3
   isEnemy: 1
+  HubVortex: {fileID: 0}
   isBoss: 0
   currencyObj: {fileID: 9113333245619956656, guid: 372970e62958ef04b83bb3ea12b202f9,
     type: 3}
@@ -151,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5533569634813336240, guid: 07c03794aa1e3694f8bd7cdaecfacd4e, type: 3}
-  player: {fileID: 3692219798782693859, guid: 7ea8f416b1cc4d54f84c38c1b6e02374, type: 3}
   spawnRate: 0.7
   spawnDelay: 0.01
   shotSpeed: 2000

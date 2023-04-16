@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class RBPlayerShooting : MonoBehaviour
 {
-    public AudioManager audioManager;
+    //public AudioManager audioManager;
+    public AudioSource source;
     public GameObject bullet;
     public float shotSpeed;
 
@@ -19,8 +20,11 @@ public class RBPlayerShooting : MonoBehaviour
     {
         if (Input.GetButtonDown("Shoot"))
         {
-
-            audioManager.Play("PlayerBullet");
+            if (source != null)
+            {
+                source.Play();
+            }
+            //audioManager.Play("PlayerBullet");
             RbPlayerShoot();
         }
 

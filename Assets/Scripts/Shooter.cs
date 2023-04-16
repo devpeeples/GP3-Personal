@@ -9,9 +9,10 @@ public class Shooter : MonoBehaviour
     public float spawnRate; 
     public float spawnDelay; 
     public float shotSpeed;
-    public GameObject audioManagerObject; 
+    //public GameObject audioManagerObject; 
 
     private GameObject shot;
+    public AudioSource source; 
 
 
     private GameObject[] playerList;
@@ -39,6 +40,10 @@ public class Shooter : MonoBehaviour
     }
     void Shoot(){
         if(gameObject.active){
+            if (source != null)
+            {
+                source.Play();
+            }
             //audioManagerObject.GetComponent<AudioManager>().Play("EnemyBullet");
             shot = Instantiate(bullet,transform.position,transform.rotation);
             shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*shotSpeed);

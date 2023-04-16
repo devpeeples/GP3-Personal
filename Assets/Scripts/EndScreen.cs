@@ -8,6 +8,8 @@ public class EndScreen : MonoBehaviour
     
     public GameObject LoseScreen;
     public GameObject Credits;
+    public bool win; 
+
     private GameObject player;
     private PlayerHealth playerHealth;
     private PlayerCurrencyUI playerCurrency; 
@@ -18,8 +20,8 @@ public class EndScreen : MonoBehaviour
 
     void Start()
     {
-        LoseScreen.SetActive(true);
-        Credits.SetActive(false);
+        //LoseScreen.SetActive(true);
+        //Credits.SetActive(false);
         gameManagerObject = GameObject.Find("GameManager");
         sceneLoader = gameManagerObject.GetComponent<SceneLoader>();
     }
@@ -67,6 +69,7 @@ public class EndScreen : MonoBehaviour
 
     private void ResetPlayer()
     {
+
         players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject player in players)
         {
@@ -78,14 +81,22 @@ public class EndScreen : MonoBehaviour
 
 
             }
-            if (player.GetComponent<PlayerCurrencyUI>())
+
+
+            if (!win)
             {
 
-                playerCurrency = player.GetComponent<PlayerCurrencyUI>();
-                playerCurrency.RobPlayer();
+                if (player.GetComponent<PlayerCurrencyUI>())
+                {
 
+                    playerCurrency = player.GetComponent<PlayerCurrencyUI>();
+                    playerCurrency.RobPlayer();
+
+
+                }
 
             }
+            
         }
     }
 }

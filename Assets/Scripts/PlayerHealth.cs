@@ -18,7 +18,8 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     public ChargeBar chargeBar;
     public BubbleDash bubbleDash;
-    public AudioManager audioManager;
+    public AudioSource source; 
+    //public AudioManager audioManager;
 
 
     public void resetCharge()
@@ -42,7 +43,22 @@ public class PlayerHealth : MonoBehaviour
         currentCharge = maxCharge;
         chargeBar.SetMaxCharge(maxCharge);
     }
+    public void AddHealth(int healthAdd)
+    {
+        if ((currentHealth + healthAdd) <= maxHealth)
+        {
 
+            currentHealth += healthAdd;
+            healthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
+            // what else would you want to do if you dont add charge?
+        }
+
+    }
     // Update is called once per frame
 
 
@@ -50,7 +66,12 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!bubbleDash.isInvincible)
         {
-            audioManager.Play("PlayerHit");
+            if (source != null)
+            {
+                source.Play();
+            }
+            //audioManager.Play("PlayerHit");
+
             currentHealth -= damage;
 
             healthBar.SetHealth(currentHealth);

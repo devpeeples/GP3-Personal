@@ -7,7 +7,7 @@ public class PlayerCurrencyUI : MonoBehaviour
 {
     public GameObject CurrencyUI;
     public int totalCurrency;
-    public AudioManager am;
+   // public AudioManager am;
 
 
     public void Update()
@@ -16,15 +16,19 @@ public class PlayerCurrencyUI : MonoBehaviour
     }
     public void addCurrency(int currency)
     {
-        am.Play("Pickup");
+       // am.Play("Pickup");
 
         totalCurrency = totalCurrency + currency;
         
     }
-    public void SubtractCurrency(int currency)
-    {
+
+    
+    public void SubtractCurrency(int currency) 
+    { 
+
         totalCurrency = totalCurrency - currency;
     }
+
     public void RobPlayer()
     {
         totalCurrency = 0;
@@ -41,8 +45,5 @@ public class PlayerCurrencyUI : MonoBehaviour
             return false;
         }
     }
-
-
-
 
 }

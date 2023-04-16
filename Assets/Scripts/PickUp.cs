@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public int currencyValue;
-
+    public AudioSource source;
 
     private PlayerCurrencyUI currencyScript = null;
     void OnTriggerEnter(Collider other)
@@ -18,7 +18,10 @@ public class PickUp : MonoBehaviour
             PlayerCurrencyUI currencyScript = other.gameObject.GetComponent<PlayerCurrencyUI>();
             if (currencyScript != null)
             {
-       
+                if (source != null)
+                {
+                    source.Play();
+                }
                 currencyScript.addCurrency(currencyValue);
                 Destroy(gameObject);
             }

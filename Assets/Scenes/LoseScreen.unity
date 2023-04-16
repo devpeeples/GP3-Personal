@@ -452,8 +452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99, y: -248}
-  m_SizeDelta: {x: 160, y: 35}
+  m_AnchoredPosition: {x: -274, y: -148}
+  m_SizeDelta: {x: 150, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &174866819
 Animator:
@@ -1076,9 +1076,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4d32bec99aecc4eabd82baf4e7b5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offCanvas: {fileID: 0}
-  onCanvas: {fileID: 0}
-  firstObject: {fileID: 0}
+  offCanvas: {fileID: 800322440}
+  onCanvas: {fileID: 2138021959}
+  firstObject: {fileID: 144567346}
 --- !u!1 &738130725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1228,7 @@ GameObject:
   - component: {fileID: 744799611}
   - component: {fileID: 744799610}
   - component: {fileID: 744799609}
+  - component: {fileID: 744799613}
   m_Layer: 0
   m_Name: Credits
   m_TagString: Untagged
@@ -1319,7 +1320,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 744799611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 800322446}
+        m_TargetAssemblyTypeName: EndScreen, Assembly-CSharp
+        m_MethodName: SeeCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 744799613}
+        m_TargetAssemblyTypeName: SwitchCanvas, Assembly-CSharp
+        m_MethodName: Switch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &744799611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,6 +1383,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744799607}
   m_CullTransparentMesh: 1
+--- !u!114 &744799613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744799607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4d32bec99aecc4eabd82baf4e7b5c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offCanvas: {fileID: 2138021959}
+  onCanvas: {fileID: 800322440}
+  firstObject: {fileID: 643700470}
 --- !u!1 &800322440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,7 +1579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &896714323
 RectTransform:
   m_ObjectHideFlags: 0

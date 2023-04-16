@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting2 : MonoBehaviour
 {
-
+    public AudioSource source;
     public GameObject superShot;
     public GameObject normalShot; 
     public float shotSpeed;
@@ -93,6 +93,10 @@ public class PlayerShooting2 : MonoBehaviour
         superShotInstance = Instantiate(superShot, transform.position, transform.rotation) as GameObject;
         if (superShotInstance != null)
         {
+            if (source != null)
+            {
+                source.Play();
+            }
             superShotInstance.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * shotSpeed);
         }
     }
@@ -103,6 +107,10 @@ public class PlayerShooting2 : MonoBehaviour
         shotInstance = Instantiate(normalShot, transform.position, transform.rotation) as GameObject;
         if (shotInstance != null)
         {
+            if (source != null)
+            {
+                source.Play();
+            }
             shotInstance.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * shotSpeed);
         }
     }

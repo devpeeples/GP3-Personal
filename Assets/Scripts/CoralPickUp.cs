@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoralPickUp : MonoBehaviour
 {
     public int chargeValue;
-
+    public AudioSource source;
 
     private PlayerHealth playerHealth = null;
     void OnTriggerEnter(Collider other)
@@ -18,7 +18,10 @@ public class CoralPickUp : MonoBehaviour
             PlayerHealth playerHealth = other.gameObject.GetComponentInParent<PlayerHealth>();
             if (playerHealth != null)
             {
-       
+                if (source != null)
+                {
+                    source.Play();
+                }
                 playerHealth.AddCharge(chargeValue);
                 Destroy(gameObject);
             }
