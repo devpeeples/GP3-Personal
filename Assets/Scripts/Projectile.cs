@@ -10,10 +10,10 @@ public class Projectile : MonoBehaviour
     {
         if (other.transform.tag == "Enemy")
         {
-        EnemyHealth enemyHealth = other.transform.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = other.transform.GetComponent<EnemyHealth>();
 
         //Destroy(collision.gameObject);
-        enemyHealth.TakeDamage(bulletDamage);
+            enemyHealth.TakeDamage(bulletDamage);
         }
     }
 }

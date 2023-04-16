@@ -4,11 +4,28 @@ using UnityEngine;
 
 public class FreezePlayer : MonoBehaviour
 {
-    public GameObject player;
+   
 
 
-    private bool shootingOn; 
-    // Start is called before the first frame update
+    private bool shootingOn;
+    private GameObject[] playerList;
+    private GameObject player;
+
+
+    void Start()
+    {
+        playerList = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject playerObject in playerList)
+        {
+            if (playerObject.GetComponent<PlayerHealth>() != null)
+            {
+                player = playerObject;
+            }
+
+        }
+
+    }
+
     void OnEnable()
     {
         

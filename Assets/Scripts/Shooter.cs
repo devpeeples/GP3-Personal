@@ -6,7 +6,6 @@ public class Shooter : MonoBehaviour
 {
     
     public GameObject bullet; 
-    public Transform player; 
     public float spawnRate; 
     public float spawnDelay; 
     public float shotSpeed;
@@ -15,15 +14,28 @@ public class Shooter : MonoBehaviour
     private GameObject shot;
 
 
+    private GameObject[] playerList;
+    private Transform player;
+
+
     void Start()
     {
+        playerList = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject playerObject in playerList)
+        {
+            if (playerObject.GetComponent<PlayerHealth>() != null)
+            {
+                player = playerObject.transform;
+            }
 
-       InvokeRepeating("Shoot",spawnDelay, spawnRate);   
+        }
+    
+        InvokeRepeating("Shoot",spawnDelay, spawnRate);   
     }
 
     void Update()
     {
-        transform.LookAt(player);
+        gameObject.transform.LookAt(player);
     }
     void Shoot(){
         if(gameObject.active){

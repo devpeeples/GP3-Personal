@@ -87,4 +87,36 @@ public static class SaveSystem
 
     }
 
+    public static void DeletePlayer()
+    {
+        string path = Application.persistentDataPath + "/Player.MinimaFan";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+
+        else
+        {
+            Debug.LogError("Save File not found in " + path);
+
+        }
+
+    }
+
+    public static void DeleteShop()
+    {
+        string path = Application.persistentDataPath + "/StopData.MinimaFan";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+
+        else
+        {
+            Debug.LogError("Save File not found in " + path);
+          
+        }
+
+    }
+
 }

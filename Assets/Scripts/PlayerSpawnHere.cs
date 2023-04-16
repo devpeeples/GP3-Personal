@@ -1,13 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class PlayerSpawnHere : MonoBehaviour
 {
-
-
-    private Transform player;
-    public Vector3 offset;
     private GameObject[] playerList;
-    private GameObject playerObject;
+    private GameObject player; 
 
 
     void Start()
@@ -17,18 +15,18 @@ public class CameraController : MonoBehaviour
         {
             if (playerObject.GetComponent<PlayerHealth>() != null)
             {
-                player = playerObject.GetComponent<Transform>(); 
+                player = playerObject;
+
+                player.transform.position = gameObject.transform.position;
+
 
             }
 
         }
     }
+    // Update is called once per frame
     void Update()
     {
-        transform.position = player.position + offset;
-
         
-
-
     }
 }

@@ -151,6 +151,10 @@ public class ShopButtons : MonoBehaviour
         isWeaponOn = IntToBool(data.weapon1button);
 
     }
+    public void OnAwake()
+    {
+        LoadShop();
+    }
 
     private bool IntToBool(int buttonSave)
     {

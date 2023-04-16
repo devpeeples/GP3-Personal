@@ -57,6 +57,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void DeleteGameData()
+    {
+        SaveSystem.DeletePlayer();
+        SaveSystem.DeleteShop();
+
+    }
+
+
     public void SaveGameData()
     {
         References();
