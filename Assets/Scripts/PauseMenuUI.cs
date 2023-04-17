@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class PauseMenuUI : MonoBehaviour
 {
-    public static bool GamePaused = false;
-
+    public bool GamePaused = false;
+    //public bool e; 
     public GameObject pauseMenu; 
     public GameObject controlsMenu;
     public GameObject settingsMenu;
@@ -24,25 +24,35 @@ public class PauseMenuUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause")) // the "Tab" key and "joystick button 7" in the Input Manager.
         {
+            /*
             if (GamePaused)
             {
-                Debug.Log("Game paused");
+                Debug.Log("game was not paused, so now it resumes with tab");
                 Resume();
             }
             else
             {
+                Debug.Log("game pausing from tab");
                 Pause();   
             }
+            */
+            GamePaused = true; 
+        }
+        if(GamePaused == true)
+        {
+            Pause();
         }
     }
 
     public void Resume ()
     {
+        GamePaused = false;
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        
         Time.timeScale = 1f;
-        GamePaused = false;
+        
     }
 
     void Pause ()
@@ -52,7 +62,7 @@ public class PauseMenuUI : MonoBehaviour
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(false);
         Time.timeScale = 0f;
-        GamePaused = true;
+        //GamePaused = true;
     }
 
     public void SeeControls()
@@ -147,6 +157,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void QuitGame()
     {
+        GamePaused = false;
         Application.Quit();
         Debug.Log("Quit");
     }
