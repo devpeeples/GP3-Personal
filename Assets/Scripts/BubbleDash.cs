@@ -76,6 +76,7 @@ public class BubbleDash : MonoBehaviour
             }
         }
 
+        //Debug.Log(Input.GetAxis("BubbleDash"));
 
 
         if (dashCdTime > 0)

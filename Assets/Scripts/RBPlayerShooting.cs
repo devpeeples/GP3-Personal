@@ -12,6 +12,7 @@ public class RBPlayerShooting : MonoBehaviour
     public float shotSpeed;
 
     private GameObject shot;
+    private bool hasShot;
     //private AudioManager audioManager;
 
 
@@ -27,14 +28,29 @@ public class RBPlayerShooting : MonoBehaviour
             //audioManager.Play("PlayerBullet");
             RbPlayerShoot();
         }
+        if(Input.GetAxis("Shoot") >= 0.5)
+        {
+            if (source != null)
+            {
+                source.Play();
+            }
+            //audioManager.Play("PlayerBullet");
+            RbPlayerShoot();
+        }
+        if (Input.GetButtonUp("Shoot") || Input.GetAxis("Shoot") < 0.5)
+        {
+            hasShot = false;
+        }
 
     }
 
     void RbPlayerShoot()
     {
-
-        shot = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-        shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * shotSpeed);
-
+        if (!hasShot)
+        {
+            shot = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+            shot.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * shotSpeed);
+            hasShot = true;
+        }
     }
 }

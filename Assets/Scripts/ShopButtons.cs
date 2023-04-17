@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ShopButtons : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class ShopButtons : MonoBehaviour
 
 
     [Header("Button Game Object Refs")]
+    public GameObject backButton1;
+
     public GameObject coralButton1;
     public GameObject coralButton2;
     public GameObject coralButton3;
@@ -247,6 +250,8 @@ public class ShopButtons : MonoBehaviour
        
     }
 
+
+
     public void CoralUpgrade1()
     {
         if (playerCurrency.CheckCurrency(coralUp1))
@@ -256,6 +261,7 @@ public class ShopButtons : MonoBehaviour
             ButtonSwitch(coralButton1, coralButton2);
             isCoralOn = CheckInteractable(coralButton1);
             isCoral2On = CheckInteractable(coralButton2);
+            // GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(firstObject, null);
         }
         else
         {
@@ -350,7 +356,7 @@ public class ShopButtons : MonoBehaviour
     }
 
 
-
+    
 
     public void DashUpgrade1()
     {
@@ -470,11 +476,13 @@ public class ShopButtons : MonoBehaviour
     {
         //isCheck1 = false;
         button1.GetComponent<Button>().interactable = false;
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(backButton1, null);
     }
     private void ButtonSwitch(GameObject button1, GameObject button2)
     {
         button1.GetComponent<Button>().interactable = false;
-        
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(button2, null);
+
         button2.GetComponent<Button>().interactable = true;
        
     }

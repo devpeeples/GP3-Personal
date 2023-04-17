@@ -10,6 +10,7 @@ public class Vortex1 : MonoBehaviour
     public bool level2;
     public bool level3;
     public bool hub;
+    public bool win; 
     private SceneLoader sceneLoader;
     private GameObject gameManagerObject;
     private GameObject[] playerList;
@@ -56,6 +57,10 @@ public class Vortex1 : MonoBehaviour
             else if (hub)
             {
                 SceneManager.LoadScene("PHub");
+            }
+            else if (win)
+            {
+                SceneManager.LoadScene("WinScreen");
             }
         }
         else

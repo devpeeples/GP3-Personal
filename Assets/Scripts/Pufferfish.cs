@@ -26,7 +26,7 @@ public class Pufferfish : MonoBehaviour
         pufferfish.SetActive(false);
         explosion.SetActive(true);
 
-        //source.Play();
+        source.Play();
 
         Collider[] enemies = Physics.OverlapSphere(transform.position, range);
 
@@ -34,7 +34,7 @@ public class Pufferfish : MonoBehaviour
         {
             if (enemy.GetComponent<EnemyHealth>() != null)
             {
-                enemy.GetComponent<EnemyHealth>().KillEnemy(transform.position);
+                enemy.GetComponent<EnemyHealth>().KillEnemy();
             }
 
         }

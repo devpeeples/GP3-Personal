@@ -44,7 +44,7 @@ public class Grapple : MonoBehaviour
     void OnEnable()
     {
         //get component for the player health
-
+        canGrapple = false;
         playerHealth = GetComponentInParent<PlayerHealth>();
     }
 
@@ -63,23 +63,39 @@ public class Grapple : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (Input.GetJoystickNames().Length >= 1)
         {
             if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
             {
-                //Debug.Log("controller perhaps");
                 withController = true;
-                joyVec.y = Input.GetAxis("JoystickGunX") * Time.fixedDeltaTime;
-
-
-                joyVec.x = 0;
-                transform.Rotate(joyVec * 750f);
+                
             }
 
         }
 
         else
         {
+            
+            withController = false;
+
+        }
+
+        
+        if (withController)
+        {
+            //Debug.Log(withController);
+            joyVec.x = Input.GetAxis("JoystickGunX");
+            joyVec.y = -(Input.GetAxis("JoystickGunY"));
+
+            if (joyVec.sqrMagnitude > 0.1f)
+            {
+                transform.rotation = Quaternion.LookRotation(new Vector3(joyVec.x, 0, joyVec.y), Vector3.up);
+            }
+        }
+        else if (!withController)
+        {
+            // Debug.Log(withController);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out target))
             {
@@ -88,76 +104,91 @@ public class Grapple : MonoBehaviour
                 targetHit.y = transform.position.y;
                 transform.LookAt(targetHit);
             }
-
         }
 
-        //this is the raycast for mouse to test if you want to grapple
+
+
         if (Input.GetButton("Grapple"))
         {
-            //check charge
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, grapple))
+                {
+
+                    Debug.DrawRay(transform.position, transform.forward, Color.green);
+                    vectorHit = objectHit.point;
+                    canGrapple = true;
+
+                    GrappleProcess(vectorHit);
 
 
-                GrappleAction();
+                }
 
             }
-
-
-
 
         }
         if (Input.GetAxisRaw("Joystick Grapple") > 0)
         {
-            //check charge
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
-                playerHealth.UseCharge(grappleCharge);
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, grapple))
+                {
 
-                GrappleAction();
+                    Debug.DrawRay(transform.position, transform.forward, Color.green);
 
+                    vectorHit = objectHit.point;
+                    canGrapple = true;
+
+                    GrappleProcess(vectorHit);
+
+
+                }
             }
-
-            /*
-            am.Play("GrapplingHook");
-
-            if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, grapple))
-            {
-
-
-                Debug.DrawRay(transform.position, transform.forward, Color.green);
-
-                vectorHit = objectHit.point;
-                canGrapple = true;
-
-
-            }
-            */
         }
-
+        /*
         if (canGrapple == true)
         {
 
             GrappleProcess(vectorHit);
         }
-
+        */
 
 
     }
+
+
+    public void GrappleProcess(Vector3 vectorHit)
+    {
+
+
+        journeyLength = Vector3.Distance(this.transform.position, vectorHit);
+
+        fractionOfJourney = speed / journeyLength;
+        player.transform.position = Vector3.Lerp(player.transform.position, vectorHit, fractionOfJourney);
+
+        if (player.transform.position == vectorHit)
+        {
+            canGrapple = false;
+        }
+    }
+    /*
+
     public void GrappleAction()
     {
 
+       
         //am.Play("GrapplingHook");
         if (Physics.Raycast(transform.position, transform.forward, out objectHit, 200, grapple))
         {
 
-
+            Debug.Log("can grapple");
 
             Debug.DrawRay(transform.position, transform.forward, Color.green);
             vectorHit = objectHit.point;
             canGrapple = true;
+            GrappleProcess();
             if (source != null)
             {
                 source.Play();
@@ -178,6 +209,8 @@ public class Grapple : MonoBehaviour
 
             Debug.DrawRay(transform.position, transform.forward, Color.green);
             EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
+            canGrapple = true;
+            GrappleProcess();
             if (enemyStun != null)
             {
 
@@ -196,26 +229,7 @@ public class Grapple : MonoBehaviour
 
         }
 
-    }
-
-
-    public void GrappleProcess(Vector3 vectorHit)
-    {
-
-        //potential issue here with the time delta time not being muiltiplied creating speed inconsistencies 
-        journeyLength = Vector3.Distance(this.transform.position, vectorHit);
-
-        fractionOfJourney = speed / journeyLength;
-        player.transform.position = Vector3.Lerp(player.transform.position, vectorHit, fractionOfJourney);
-        player.LookAt(vectorHit);
-
-        if (player.transform.position == vectorHit)
-        {
-
-            canGrapple = false;
-            playerHealth.UseCharge(grappleCharge);
-        }
-    }
+    }*/
 
 
 }
