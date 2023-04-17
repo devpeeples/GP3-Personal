@@ -6,7 +6,8 @@ public class UINext : MonoBehaviour
 {
     public bool isShowingNext; 
     public bool somethingNext;
-    public bool isNextObject; 
+    public bool isNextObject;
+    public bool shop;
     
     //public bool isTheNext;
     //public GameObject Previous;
@@ -23,35 +24,48 @@ public class UINext : MonoBehaviour
     {
         //this.isShowingNext = false; 
     }
+    public void backButton()
+    {
+        Debug.Log("backbutton pressed");
+        this.gameObject.SetActive(false);
+        Debug.Log(this.gameObject);
+    }
+
+
+
     void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (!shop)
         {
-            if (!somethingNext)
+            if (Input.GetButtonDown("Interact"))
             {
-                
-                if (isNextObject)
+                if (!somethingNext)
                 {
-                    prevObj.GetComponent<UINext>().isShowingNext = false;
-                   
-                }
-                isShowingNext = false;
-                this.gameObject.SetActive(false);
 
-            }
-            else if (somethingNext)
-            {
-                if (!isNextObject)
-                {
-                    isShowingNext = true;
+                    if (isNextObject)
+                    {
+                        prevObj.GetComponent<UINext>().isShowingNext = false;
+
+                    }
+                    isShowingNext = false;
                     this.gameObject.SetActive(false);
-                    nextObj.SetActive(true);
+
                 }
-               
-                
+                else if (somethingNext)
+                {
+                    if (!isNextObject)
+                    {
+                        isShowingNext = true;
+                        this.gameObject.SetActive(false);
+                        nextObj.SetActive(true);
+                    }
 
 
+
+
+                }
             }
         }
+       
     }
 }

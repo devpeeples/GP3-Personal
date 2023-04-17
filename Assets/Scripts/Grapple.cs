@@ -63,23 +63,27 @@ public class Grapple : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (Input.GetJoystickNames().Length >= 1)
         {
             if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
             {
-                //Debug.Log("controller perhaps");
+                withController = true;
+                /*Debug.Log("controller perhaps");
                 withController = true;
                 joyVec.y = Input.GetAxis("JoystickGunX") * Time.fixedDeltaTime;
 
 
                 joyVec.x = 0;
                 transform.Rotate(joyVec * 750f);
+                */
             }
 
         }
 
         else
         {
+            /*
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out target))
             {
@@ -88,10 +92,13 @@ public class Grapple : MonoBehaviour
                 targetHit.y = transform.position.y;
                 transform.LookAt(targetHit);
             }
+            */
+            withController = false;
 
         }
 
         //this is the raycast for mouse to test if you want to grapple
+        /*
         if (Input.GetButton("Grapple"))
         {
             //check charge
@@ -108,6 +115,8 @@ public class Grapple : MonoBehaviour
 
 
         }
+        */
+        /*
         if (Input.GetAxisRaw("Joystick Grapple") > 0)
         {
             //check charge
@@ -119,6 +128,7 @@ public class Grapple : MonoBehaviour
                 GrappleAction();
 
             }
+        */
 
             /*
             am.Play("GrapplingHook");
@@ -134,7 +144,7 @@ public class Grapple : MonoBehaviour
 
 
             }
-            */
+            
         }
 
         if (canGrapple == true)
@@ -143,7 +153,30 @@ public class Grapple : MonoBehaviour
             GrappleProcess(vectorHit);
         }
 
+        */
+        if (withController)
+        {
+            //Debug.Log(withController);
+            joyVec.x = Input.GetAxis("JoystickGunX");
+            joyVec.y = -(Input.GetAxis("JoystickGunY"));
 
+            if (joyVec.sqrMagnitude > 0.1f)
+            {
+                transform.rotation = Quaternion.LookRotation(new Vector3(joyVec.x, 0, joyVec.y), Vector3.up);
+            }
+        }
+        else if(!withController)
+        {
+           // Debug.Log(withController);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray.origin, ray.direction, out target))
+            {
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow);
+                Vector3 targetHit = target.point;
+                targetHit.y = transform.position.y;
+                transform.LookAt(targetHit);
+            }
+        }
 
     }
     public void GrappleAction()

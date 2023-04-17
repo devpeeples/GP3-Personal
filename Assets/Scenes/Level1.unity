@@ -107574,6 +107574,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HubVortex
       objectReference: {fileID: 0}
+    - target: {fileID: 889734767838669372, guid: 1ac24588eecdd9748b5c6a16ce71d3f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ac24588eecdd9748b5c6a16ce71d3f6, type: 3}
 --- !u!1001 &6752313174624059741
