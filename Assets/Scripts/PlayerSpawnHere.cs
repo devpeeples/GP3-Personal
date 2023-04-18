@@ -19,7 +19,6 @@ public class PlayerSpawnHere : MonoBehaviour
 
                 player.transform.position = gameObject.transform.position;
 
-
             }
 
         }
