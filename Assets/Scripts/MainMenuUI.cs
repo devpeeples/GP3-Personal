@@ -6,12 +6,15 @@ using UnityEngine.EventSystems;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public AudioSource source;
+
     public GameObject main;
     public GameObject credits;
     public GameObject settings;
     public GameObject controls;
     public GameObject keyboard;
     public GameObject controller;
+    
 
     public GameObject mainFirstButton; 
     public GameObject controlsFirstButton; 
@@ -23,6 +26,8 @@ public class MainMenuUI : MonoBehaviour
 
     private void Awake()
     {
+
+       // sourcePlay();
         main.SetActive(true);
         credits.SetActive(false);
         controls.SetActive(false);
@@ -38,6 +43,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
+        //sourcePlay();
         main.SetActive(true);
         credits.SetActive(false);
         controls.SetActive(false);
@@ -60,6 +66,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void SeeControlsMenu()
     {
+        sourcePlay();
         main.SetActive(false);
         credits.SetActive(false);
         controls.SetActive(true);
@@ -75,6 +82,7 @@ public class MainMenuUI : MonoBehaviour
     
      public void CloseControlsMenu()
     {
+        sourcePlay();
         main.SetActive(true);
         credits.SetActive(false);
         controls.SetActive(false);
@@ -89,6 +97,7 @@ public class MainMenuUI : MonoBehaviour
     }
     public void Keyboard()
     {
+        sourcePlay();
         main.SetActive(false);
         credits.SetActive(false);
         controls.SetActive(true);
@@ -99,6 +108,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void Controller()
     {
+        sourcePlay();
         main.SetActive(false);
         credits.SetActive(false);
         controls.SetActive(true);
@@ -109,6 +119,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void SeeCreditsMenu()
     {
+        sourcePlay();
         main.SetActive(false);
         credits.SetActive(true);
         controls.SetActive(false);
@@ -124,6 +135,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void CloseCreditsMenu()
     {
+        sourcePlay();
         main.SetActive(true);
         credits.SetActive(false);
         controls.SetActive(false);
@@ -139,6 +151,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void SeeSettingsMenu()
     {
+        sourcePlay();
         main.SetActive(false);
         credits.SetActive(false);
         controls.SetActive(false);
@@ -154,6 +167,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void CloseSettingsMenu()
     {
+        sourcePlay();
         main.SetActive(true);
         credits.SetActive(false);
         controls.SetActive(false);
@@ -171,5 +185,13 @@ public class MainMenuUI : MonoBehaviour
     {
         Debug.Log("Quit Successful!");
         Application.Quit();
+    }
+    public void sourcePlay()
+    {
+        if (source != null)
+        {
+            source.Play();
+        }
+
     }
 }

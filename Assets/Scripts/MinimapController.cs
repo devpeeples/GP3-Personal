@@ -7,10 +7,12 @@ public class MinimapController : MonoBehaviour
     private GameObject[] players;
     //private GameObject playerObject; 
     private Transform playerTransform;
+    private float startingY; 
 
 
     void Start()
     {
+        startingY = transform.position.y; 
         players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject player in players)
         {
@@ -27,7 +29,9 @@ public class MinimapController : MonoBehaviour
     void LateUpdate()
     {
         Vector3 newPositon = playerTransform.position;
-        newPositon.y = transform.position.y;
+        newPositon.y = startingY;
+        Debug.Log(newPositon.y);
         transform.position = newPositon;
+        Debug.Log(transform.position);
     }
 }

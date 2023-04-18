@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveButtons : MonoBehaviour
 {
+    public AudioSource source; 
     private GameObject gameManagerObject;
     private GameManager gameManager;
     private ShopButtons shopButtons; 
@@ -23,6 +24,7 @@ public class SaveButtons : MonoBehaviour
 
     public void SaveButton()
     {
+        source.Play();
         gameManager.SaveGameData();
         shopCrabParents = GameObject.FindGameObjectsWithTag("ShopCrab");
 
@@ -46,6 +48,7 @@ public class SaveButtons : MonoBehaviour
 
     public void Delete()
     {
+        source.Play();
         SaveSystem.DeletePlayer();
         SaveSystem.DeleteShop();
         //SceneManager.LoadScene("Tutorial");
@@ -53,5 +56,12 @@ public class SaveButtons : MonoBehaviour
 
 
 
+    }
+    public void sourcePlay()
+    {
+        if (source != null)
+        {
+            source.Play();
+        }
     }
 }

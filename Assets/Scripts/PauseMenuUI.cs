@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class PauseMenuUI : MonoBehaviour
 {
+    public AudioSource source;
+
+    public GameObject playerShellShooter;
     public bool GamePaused = false;
     //public bool e; 
     public GameObject pauseMenu; 
@@ -13,18 +16,20 @@ public class PauseMenuUI : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject keyboard;
     public GameObject controller;
+    
 
     public GameObject pauseFirstButton; 
     public GameObject controlsFirstButton;
     public GameObject controlsCloseButton; 
     public GameObject settingsFirstButton; 
     public GameObject settingsCloseButton;
+    private bool shootingOn; 
 
     void Update()
     {
         if (Input.GetButtonDown("Pause")) // the "Tab" key and "joystick button 7" in the Input Manager.
         {
-            /*
+            
             if (GamePaused)
             {
                 Debug.Log("game was not paused, so now it resumes with tab");
@@ -35,24 +40,35 @@ public class PauseMenuUI : MonoBehaviour
                 Debug.Log("game pausing from tab");
                 Pause();   
             }
-            */
-            GamePaused = true; 
+            
+            //GamePaused = true; 
         }
+        /*
         if(GamePaused == true)
         {
             Pause();
         }
+        */
     }
 
     public void Resume ()
     {
+        sourcePlay();
         GamePaused = false;
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(false);
         
         Time.timeScale = 1f;
-        
+        if (!shootingOn)
+        {
+            playerShellShooter.GetComponent<RBPlayerShooting>().enabled = true;
+        }
+        else if (shootingOn)
+        {
+            playerShellShooter.GetComponent<PlayerShooting2>().enabled = true;
+        }
+
     }
 
     void Pause ()
@@ -62,11 +78,22 @@ public class PauseMenuUI : MonoBehaviour
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(false);
         Time.timeScale = 0f;
-        //GamePaused = true;
+        if (playerShellShooter.GetComponent<RBPlayerShooting>().enabled)
+        {
+            shootingOn = false;
+            playerShellShooter.GetComponent<RBPlayerShooting>().enabled = false;
+        }
+        else if (playerShellShooter.GetComponent<PlayerShooting2>().enabled)
+        {
+            shootingOn = true;
+            playerShellShooter.GetComponent<PlayerShooting2>().enabled = false;
+        }
+        GamePaused = true;
     }
 
     public void SeeControls()
     {
+        sourcePlay();
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(true);
         settingsMenu.SetActive(false);
@@ -77,9 +104,20 @@ public class PauseMenuUI : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(controlsFirstButton);
+        if (playerShellShooter.GetComponent<RBPlayerShooting>().enabled)
+        {
+            shootingOn = false;
+            playerShellShooter.GetComponent<RBPlayerShooting>().enabled = false;
+        }
+        else if (playerShellShooter.GetComponent<PlayerShooting2>().enabled)
+        {
+            shootingOn = true;
+            playerShellShooter.GetComponent<PlayerShooting2>().enabled = false;
+        }
     }
     public void CloseControls()
     {
+        sourcePlay();
         pauseMenu.SetActive(true);
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -94,6 +132,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Keyboard()
     {
+        sourcePlay();
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(true);
         settingsMenu.SetActive(false);
@@ -106,6 +145,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Controller()
     {
+        sourcePlay();
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(true);
         settingsMenu.SetActive(false);
@@ -118,6 +158,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void SeeSettings()
     {
+        sourcePlay();
         pauseMenu.SetActive(false);
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(true);
@@ -128,10 +169,12 @@ public class PauseMenuUI : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+        
     }
 
     public void CloseSettings()
     {
+        sourcePlay();
         pauseMenu.SetActive(true);
         controlsMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -146,11 +189,13 @@ public class PauseMenuUI : MonoBehaviour
 
     public void GoToHub()
     {
+        sourcePlay();
         SceneManager.LoadScene("PHub");
         GamePaused = false;
     }
     public void GoToMainMenu()
     {
+        sourcePlay();
         SceneManager.LoadScene("MainMenuV2");
         GamePaused = false;
     }
@@ -160,5 +205,13 @@ public class PauseMenuUI : MonoBehaviour
         GamePaused = false;
         Application.Quit();
         Debug.Log("Quit");
+    }
+    public void sourcePlay()
+    {
+        if(source != null)
+        {
+            source.Play();
+        }
+       
     }
 }

@@ -8,7 +8,10 @@ public class UINext : MonoBehaviour
     public bool somethingNext;
     public bool isNextObject;
     public bool shop;
-    
+
+
+
+    public AudioSource source;
     //public bool isTheNext;
     //public GameObject Previous;
     public GameObject nextObj;
@@ -26,6 +29,7 @@ public class UINext : MonoBehaviour
     }
     public void backButton()
     {
+        PlaySound();
         Debug.Log("backbutton pressed");
         this.gameObject.SetActive(false);
         Debug.Log(this.gameObject);
@@ -67,5 +71,12 @@ public class UINext : MonoBehaviour
             }
         }
        
+    }
+    private void PlaySound()
+    {
+        if(source != null)
+        {
+            source.Play();
+        }
     }
 }

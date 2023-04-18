@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FreezePlayer : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class FreezePlayer : MonoBehaviour
     private GameObject player;
 
 
-    void Start()
+    void Awake()
     {
         playerList = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerObject in playerList)
@@ -31,11 +32,14 @@ public class FreezePlayer : MonoBehaviour
         
         if (player != null)
         {
+            Time.timeScale = 0f;
             player.GetComponent<MovementRB>().speed = 0;
             player.GetComponent<MovementRB>().rotationSpeed = 0;
             player.GetComponentInChildren<Grapple>().enabled = false;
             player.GetComponent<BubbleDash>().enabled = false;
             player.GetComponent<BubbleShield>().enabled = false;
+
+
 
             if (player.GetComponentInChildren<RBPlayerShooting>().enabled)
             {
@@ -59,6 +63,7 @@ public class FreezePlayer : MonoBehaviour
 
         if (player != null)
         {
+            Time.timeScale = 1f;
             player.GetComponent<MovementRB>().rotationSpeed = player.GetComponent<MovementRB>().setRotationSpeed;
             player.GetComponent<MovementRB>().speed = player.GetComponent<MovementRB>().setSpeed;
             player.GetComponentInChildren<Grapple>().enabled = true;

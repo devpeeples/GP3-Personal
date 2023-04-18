@@ -8,6 +8,9 @@ public class ShopButtons : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public AudioSource sourceYes;
+    public AudioSource sourceNo;
+
     private PlayerCurrencyUI playerCurrency; 
     private PlayerHealth playerHealth;
     private Grapple grapple;
@@ -265,7 +268,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -281,7 +284,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -296,7 +299,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -316,7 +319,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }   
     }
 
@@ -334,7 +337,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -350,7 +353,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
 
     }
@@ -370,7 +373,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -387,7 +390,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -403,7 +406,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
 
     }
@@ -422,7 +425,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -439,7 +442,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
     }
 
@@ -454,7 +457,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            //can put code in case you can't afford something
+            PlaySoundNo();
         }
 
     }
@@ -470,21 +473,40 @@ public class ShopButtons : MonoBehaviour
             ButtonSwitch(weaponButton1);
             isWeaponOn = CheckInteractable(weaponButton1);
         }
+        else
+        {
+            PlaySoundNo();
+        }
     }
 
     private void ButtonSwitch(GameObject button1)
     {
+        PlaySound();
         //isCheck1 = false;
         button1.GetComponent<Button>().interactable = false;
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(backButton1, null);
     }
     private void ButtonSwitch(GameObject button1, GameObject button2)
     {
+        PlaySound();
         button1.GetComponent<Button>().interactable = false;
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(button2, null);
 
         button2.GetComponent<Button>().interactable = true;
        
     }
-
+    private void PlaySound()
+    {
+        if(sourceYes != null)
+        {
+            sourceYes.Play();
+        }
+    }
+    private void PlaySoundNo()
+    {
+        if (sourceNo != null)
+        {
+            sourceNo.Play();
+        }
+    }
 }

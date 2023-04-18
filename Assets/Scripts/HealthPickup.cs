@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
-    private PlayerHealth currentHealth;
+    //private PlayerHealth currentHealth;
     public int healthIncrease;
     //public HealthBar healthBar;
     //audio
