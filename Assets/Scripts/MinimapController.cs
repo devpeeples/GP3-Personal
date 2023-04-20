@@ -30,8 +30,7 @@ public class MinimapController : MonoBehaviour
     {
         Vector3 newPositon = playerTransform.position;
         newPositon.y = startingY;
-        Debug.Log(newPositon.y);
+        
         transform.position = newPositon;
-        Debug.Log(transform.position);
     }
 }

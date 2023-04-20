@@ -1501,6 +1501,7 @@ MonoBehaviour:
   somethingNext: 1
   isNextObject: 0
   shop: 0
+  source: {fileID: 0}
   nextObj: {fileID: 1006078197}
   prevObj: {fileID: 0}
 --- !u!114 &209824534
@@ -2042,7 +2043,7 @@ GameObject:
   - component: {fileID: 300770407}
   - component: {fileID: 300770406}
   - component: {fileID: 300770405}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6213,6 +6214,7 @@ MonoBehaviour:
   somethingNext: 0
   isNextObject: 1
   shop: 0
+  source: {fileID: 0}
   nextObj: {fileID: 0}
   prevObj: {fileID: 209824530}
 --- !u!114 &1006078201
@@ -7708,6 +7710,7 @@ MonoBehaviour:
   somethingNext: 1
   isNextObject: 0
   shop: 0
+  source: {fileID: 0}
   nextObj: {fileID: 0}
   prevObj: {fileID: 0}
 --- !u!114 &1241840941
@@ -8649,6 +8652,7 @@ MonoBehaviour:
   somethingNext: 1
   isNextObject: 0
   shop: 0
+  source: {fileID: 0}
   nextObj: {fileID: 0}
   prevObj: {fileID: 0}
 --- !u!114 &1459609245
@@ -10226,6 +10230,7 @@ MonoBehaviour:
   somethingNext: 0
   isNextObject: 0
   shop: 0
+  source: {fileID: 0}
   nextObj: {fileID: 0}
   prevObj: {fileID: 0}
 --- !u!114 &1722985451

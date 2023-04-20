@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.8263254, y: 2.0810313, z: 6.5749593}
-  m_Center: {x: 0.8071332, y: 0.54051566, z: -1.0945547}
+  m_Size: {x: 7.8263254, y: 5.694104, z: 6.5749593}
+  m_Center: {x: 0.8071332, y: 2.347052, z: -1.0945547}
 --- !u!114 &9113333245619956659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyValue: 5
-  source: {fileID: 0}
+  source: {fileID: 1901466657975655385, guid: 44f5b87668b5c164fb00810795be4319, type: 3}

@@ -15,6 +15,7 @@ public class Grapple : MonoBehaviour
     RaycastHit target;
     public float speed;
     public float stunInvincibility;
+    public int maxDistance;
 
 
     private float startTime;
@@ -57,13 +58,11 @@ public class Grapple : MonoBehaviour
     public void IncreaseStun(float amount)
     {
         stunTime += amount;
-
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
         if (Input.GetJoystickNames().Length >= 1)
         {
             if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
@@ -95,34 +94,57 @@ public class Grapple : MonoBehaviour
         }
         else if (!withController)
         {
-            // Debug.Log(withController);
+            Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            Vector3 mousePos = Input.mousePosition - screenCenter;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction, out target))
+            int floorLayerMask = 1 << LayerMask.NameToLayer("Floor"); // Only hit objects on the Floor layer
+            RaycastHit target;
+            if (Physics.Raycast(ray, out target, Mathf.Infinity, floorLayerMask))
             {
                 Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow);
                 Vector3 targetHit = target.point;
                 targetHit.y = transform.position.y;
-                transform.LookAt(targetHit);
+                Vector3 direction = (targetHit - transform.position);
+                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+                transform.rotation = targetRotation;
             }
         }
 
 
 
-        if (Input.GetButton("Grapple"))
+
+
+
+
+        if (Input.GetButton("Grapple") || Input.GetAxisRaw("Joystick Grapple") > 0)
         {
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, grapple))
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
                 {
+                    Debug.Log("Enemy hit");
+                    this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
 
                     Debug.DrawRay(transform.position, transform.forward, Color.green);
+                    EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
+                    vectorHit = objectHit.point;
+                    canGrapple = true;
+                    GrappleProcess(vectorHit);
+                    if (enemyStun != null)
+                    {
+                        enemyStun.Stun(stunTime);
+                    }
+                }
+                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
+                {
+                    Debug.Log("Grapple hit");
+                    Debug.DrawRay(transform.position, transform.forward, Color.green);
+
                     vectorHit = objectHit.point;
                     canGrapple = true;
 
                     GrappleProcess(vectorHit);
-
-
                 }
 
             }
@@ -133,7 +155,7 @@ public class Grapple : MonoBehaviour
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, grapple))
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, enemy))
                 {
 
                     Debug.DrawRay(transform.position, transform.forward, Color.green);
@@ -145,17 +167,26 @@ public class Grapple : MonoBehaviour
 
 
                 }
+                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, 200, grapple))
+                {
+                    this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
+
+                    Debug.DrawRay(transform.position, transform.forward, Color.green);
+                    EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
+                    vectorHit = objectHit.point;
+                    canGrapple = true;
+                    GrappleProcess(vectorHit);
+                    if (enemyStun != null)
+                    {
+
+                        enemyStun.Stun(stunTime);
+
+                    }
+
+                }
             }
         }
-        /*
-        if (canGrapple == true)
-        {
-
-            GrappleProcess(vectorHit);
-        }
-        */
-
-
+      
     }
 
 
@@ -173,63 +204,4 @@ public class Grapple : MonoBehaviour
             canGrapple = false;
         }
     }
-    /*
-
-    public void GrappleAction()
-    {
-
-       
-        //am.Play("GrapplingHook");
-        if (Physics.Raycast(transform.position, transform.forward, out objectHit, 200, grapple))
-        {
-
-            Debug.Log("can grapple");
-
-            Debug.DrawRay(transform.position, transform.forward, Color.green);
-            vectorHit = objectHit.point;
-            canGrapple = true;
-            GrappleProcess();
-            if (source != null)
-            {
-                source.Play();
-            }
-
-
-        }
-        else if (Physics.Raycast(transform.position, transform.forward, out objectHit, 200, enemy))
-        {
-
-
-
-            //am.Play("GrapplingHook");
-
-
-            this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
-
-
-            Debug.DrawRay(transform.position, transform.forward, Color.green);
-            EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
-            canGrapple = true;
-            GrappleProcess();
-            if (enemyStun != null)
-            {
-
-                enemyStun.Stun(stunTime);
-
-            }
-
-
-            vectorHit = objectHit.point;
-            canGrapple = true;
-            if (source != null)
-            {
-                source.Play();
-            }
-
-
-        }
-
-    }*/
-
-
 }

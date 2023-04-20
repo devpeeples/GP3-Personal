@@ -10,16 +10,14 @@ public class MovementRB : MonoBehaviour
     public float rotationSpeed;
 
 
-
-
     private float xMove;
     private float zMove;
     private Vector3 movementDirection;
     public float setSpeed;
-    public float setRotationSpeed; 
-    
-
-
+    public float setRotationSpeed;
+    private float horizontal; 
+    private float vertical;
+    private Vector3 forward, right, heading; 
     [Header("References")]
     public BubbleDash bD;
     [SerializeField] private Rigidbody rb;
@@ -33,49 +31,47 @@ public class MovementRB : MonoBehaviour
         setRotationSpeed = rotationSpeed; 
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
- 
         
+        //camera stuff
+        forward = Camera.main.transform.forward;
+        forward.y = 0;
+        forward = Vector3.Normalize(forward);
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        float xMove = Input.GetAxisRaw("Horizontal");
-        float zMove = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector3(xMove, 0, zMove);
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-        //rotate character to movement direction- it is a transform not a rb movement
-        if (movementDirection != Vector3.zero)
+        Vector3 rightMovement = right * speed * Time.deltaTime * horizontal;
+        Vector3 upMovement = forward * speed * Time.deltaTime * vertical;
+
+        Vector3 inputDirection = Vector3.Normalize(rightMovement + upMovement);
+
+        if (inputDirection != Vector3.zero)
         {
-            //animate run state 
             anim.SetBool("isMoving", true);
-            //sound of walking
-            
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+
+            heading = Vector3.Lerp(heading, inputDirection, Time.deltaTime * rotationSpeed);
+
+            Quaternion toRotation = Quaternion.LookRotation(heading, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
         }
         else
         {
-            //am.Play("SandStep");
-            //am.Stop("SandStep");
             anim.SetBool("isMoving", false);
-            //animate idle state
-            //no sound of walking
+            heading = Vector3.zero;
         }
-        
     }
 
     void FixedUpdate()
     {
-        // this code will apply force to the rb based on the movement direction 
-
-
-        //if script is not dashing, dash 
         if (!bD.isDashing)
         {
-            rb.velocity = movementDirection * speed;
+            rb.velocity = heading * speed;
         }
-            
-
     }
 }

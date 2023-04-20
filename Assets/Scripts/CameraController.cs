@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
 
 
     private Transform player;
-    public Vector3 offset;
+    //public Vector3 offset;
     private GameObject[] playerList;
     private GameObject playerObject;
 
@@ -25,10 +25,6 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
-        transform.position = player.position + offset;
-
-        
-
-
+        transform.position = player.position;
     }
 }

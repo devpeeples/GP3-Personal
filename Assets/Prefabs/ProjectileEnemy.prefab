@@ -129,16 +129,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c967ecdf56fc2047b1eea625c857bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCurrency: 1
-  maxCurrency: 3
   isEnemy: 1
-  HubVortex: {fileID: 0}
+  isEmpress: 0
   isBoss: 0
-  currencyObj: {fileID: 9113333245619956656, guid: 372970e62958ef04b83bb3ea12b202f9,
-    type: 3}
+  HubVortex: {fileID: 0}
+  winSceneVortex: {fileID: 0}
+  yValueOfFloor: 0
+  health: 20
+  source: {fileID: 0}
   maxCurrencyOffset: {x: 1, y: 0, z: 1}
   plane: 1
-  health: 20
+  maxDrops: 3
+  currencyPrefabs:
+  - {fileID: 9113333245619956656, guid: 372970e62958ef04b83bb3ea12b202f9, type: 3}
+  minCurrencyDrops: 2
+  maxCurrencyDrops: 4
+  chargePrefabs:
+  - {fileID: 4830016083330104158, guid: 25bc3616b8e85e64181917dd9eb38738, type: 3}
+  minChargeDrops: 0
+  maxChargeDrops: 1
+  healthPrefabs:
+  - {fileID: 7601159998378994155, guid: 087da4985e0c0514ca542a36bd259247, type: 3}
+  minHealthDrops: 1
+  maxHealthDrops: 2
 --- !u!114 &1453997271395088945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +168,7 @@ MonoBehaviour:
   spawnRate: 0.7
   spawnDelay: 0.01
   shotSpeed: 2000
-  audioManagerObject: {fileID: 8646079335741552870, guid: 428b736c1c5853342a65b3705acfc30b,
-    type: 3}
+  source: {fileID: 0}
 --- !u!1001 &7009958392405924234
 PrefabInstance:
   m_ObjectHideFlags: 0
