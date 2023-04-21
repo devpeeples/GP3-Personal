@@ -40,9 +40,9 @@ Material:
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
-    - _Radial_Strength: 5
+    - _Radial_Strength: 20.14
     - _Twirl_Strength: 2
-    - _Voronoi_Power: 10
+    - _Voronoi_Power: 23.93
     - _Voronoi_Size: 1000
     - _Voronoi_Speed: 1.5
     m_Colors:

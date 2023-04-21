@@ -7,7 +7,6 @@ public class Pufferfish : MonoBehaviour
     public GameObject pufferfish;
     public GameObject explosion;
     private AudioSource source;
-    public GameObject playerBullet;
     public Animation anim;
 
     [SerializeField]
@@ -26,7 +25,6 @@ public class Pufferfish : MonoBehaviour
         pufferfish.SetActive(false);
         explosion.SetActive(true);
 
-        source.Play();
 
         Collider[] enemies = Physics.OverlapSphere(transform.position, range);
 
