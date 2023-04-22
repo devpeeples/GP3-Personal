@@ -5941,7 +5941,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Good luck fighting the corruption!
+  m_Text: Show them what for!
 --- !u!222 &998211949
 CanvasRenderer:
   m_ObjectHideFlags: 0
