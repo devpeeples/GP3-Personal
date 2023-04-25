@@ -5,26 +5,44 @@ using UnityEngine;
 public class Pufferfish : MonoBehaviour
 {
     public GameObject pufferfish;
-    public GameObject explosion;
+    //public GameObject explosion;
     private AudioSource source;
+    private Collider collider; 
     public Animation anim;
+    public ParticleSystem explosion; 
+    public float destroyTime;
+    public float delayUpTime; 
 
     [SerializeField]
     private float range;
+    private bool isGoUp = false;
+    public float upSpeed; 
     // Start is called before the first frame update
     private void Awake()
     {
         pufferfish.SetActive(true);
-        explosion.SetActive(false);
+        //explosion.SetActive(false);
+
 
         source = GetComponent<AudioSource>();
+        collider = GetComponent<Collider>();
     }
 
     public void Explode()
     {
-        pufferfish.SetActive(false);
-        explosion.SetActive(true);
-
+        //disable collider not object so that it can do animation 
+        collider.enabled = !collider.enabled;
+        //explosion.SetActive(true);
+        if (explosion != null)
+        {
+            explosion.gameObject.SetActive(true);
+            explosion.Play();
+        }
+        if (anim != null)
+        {
+            //anim.Play();
+            //anim play isnt working idk why 
+        }
 
         Collider[] enemies = Physics.OverlapSphere(transform.position, range);
 
@@ -36,8 +54,20 @@ public class Pufferfish : MonoBehaviour
             }
 
         }
-        enabled = false;
+        //enabled = false;
+        Invoke("turnOnGoUp", delayUpTime);
+        Invoke("DestroyObject", destroyTime);
+        
+
     }
+    void Update()
+    {
+        if (isGoUp == true)
+        {
+            GoUp();
+        }
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -47,4 +77,17 @@ public class Pufferfish : MonoBehaviour
         }
 
     }
+    private void turnOnGoUp()
+    {
+        isGoUp = true; 
+    }
+    private void GoUp()
+    {
+        transform.position += Vector3.up * upSpeed * Time.deltaTime;
+    }
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
+
 }

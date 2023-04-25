@@ -16,6 +16,7 @@ public class Grapple : MonoBehaviour
     public float speed;
     public float stunInvincibility;
     public int maxDistance;
+    public float rotationSpeed;
 
 
     private float startTime;
@@ -60,7 +61,7 @@ public class Grapple : MonoBehaviour
         stunTime += amount;
     }
 
-    // Update is called once per frame
+    // this is going to make sure that both vcontroller and non controller grapple points where it should 
     void FixedUpdate()
     {
         if (Input.GetJoystickNames().Length >= 1)
@@ -68,19 +69,19 @@ public class Grapple : MonoBehaviour
             if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
             {
                 withController = true;
-                
+
             }
 
         }
 
         else
         {
-            
+
             withController = false;
 
         }
 
-        
+
         if (withController)
         {
             //Debug.Log(withController);
@@ -186,18 +187,25 @@ public class Grapple : MonoBehaviour
                 }
             }
         }
-      
+
     }
 
 
     public void GrappleProcess(Vector3 vectorHit)
     {
-
-
         journeyLength = Vector3.Distance(this.transform.position, vectorHit);
-
         fractionOfJourney = speed / journeyLength;
+
         player.transform.position = Vector3.Lerp(player.transform.position, vectorHit, fractionOfJourney);
+
+        // Get the direction that the player needs to face
+        Vector3 direction = (vectorHit - player.transform.position).normalized;
+
+        // Create a rotation that looks in the direction
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        // Smoothly rotate the player towards the target rotation
+        player.transform.rotation = Quaternion.Lerp(player.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         if (player.transform.position == vectorHit)
         {
@@ -205,3 +213,5 @@ public class Grapple : MonoBehaviour
         }
     }
 }
+
+

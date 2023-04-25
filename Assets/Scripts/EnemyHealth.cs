@@ -21,14 +21,11 @@ public class EnemyHealth : MonoBehaviour
     private Vector3 currencyOffset;
     public AudioSource source;
 
-    /*
-    public GameObject currencyObj;
-    public GameObject chargeObj;
-    public GameObject healthObj;
-    public int minCurrency;
-    public int maxCurrency;
-    */
-   
+    //make particle a prefab and then add it using this- make sure particle effect is child of the enemy
+    public ParticleSystem particleHit;
+    //death particle does not have to be a child i think.. 
+    public ParticleSystem deathParticle;
+
     public Vector3 maxCurrencyOffset;
     public float plane;
 
@@ -90,7 +87,6 @@ public class EnemyHealth : MonoBehaviour
         // Shuffle the objectsToDrop list to randomize the order
         for (int i = 0; i < objectsToDrop.Count; i++)
         {
-            Debug.Log("Adding health object");
             GameObject temp = objectsToDrop[i];
             int randomIndex = Random.Range(i, objectsToDrop.Count);
             objectsToDrop[i] = objectsToDrop[randomIndex];
@@ -100,7 +96,6 @@ public class EnemyHealth : MonoBehaviour
         // Drop the objects
         for (int i = 0; i < maxDrops; i++)
         {
-            Debug.Log("For max drops");
             CurrencyOffset();
             if( objectsToDrop.Count != 0)
             {
@@ -116,13 +111,17 @@ public class EnemyHealth : MonoBehaviour
         {
             source.Play();
         }
+        if(particleHit != null)
+        {
+            particleHit.gameObject.SetActive(true);
+            particleHit.Play();
+        }
         
         health = health - bulletDamage;
         if(health <= 0)
         {
             if (isEnemy)
             {
-                Debug.Log("Enemy Died");
                 DropCurrency();
             }
 
@@ -140,27 +139,15 @@ public class EnemyHealth : MonoBehaviour
             //delete the enemy from the enemy list 
             // Destroy(gameObject);
             gameObject.SetActive(false);
+            if (deathParticle != null)
+            {
+                var objectInstance = Instantiate(deathParticle, new Vector3(deathParticle.transform.position.x, deathParticle.transform.position.y, deathParticle.transform.position.z), Quaternion.identity);
+                Destroy(objectInstance, 2.0f);
+            }
         }
     }
 
 
-    //here we instatiate a random int of currency 
-    /*
-    private void CurrencyDrop()
-    {
-        currencyDrop = Random.Range(minCurrency, maxCurrency);
-
-        
-
-        for (int i = 0; i <= currencyDrop; i++)
-        {
-            CurrencyOffset();
-            Instantiate(currencyObj, new Vector3(transform.position.x, this.gameObject.transform.position.y, transform.position.z) + currencyOffset, transform.rotation);
-        }
-        
-
-    }
-    */
 
 
 
@@ -174,6 +161,8 @@ public class EnemyHealth : MonoBehaviour
     public void KillEnemy()
     {
         DropCurrency();
+       
+        
         Destroy(gameObject);
     }
 

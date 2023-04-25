@@ -8,7 +8,8 @@ public class EnemyStun : MonoBehaviour
     private MeleeFollow meleeFollow;
     //public float stunTime;
 
-
+    //make particle a prefab and then add it using this- make sure particle effect is child of the enemy
+    public ParticleSystem particleHit;
 
 
     public void Stun(float stunTime)
@@ -22,6 +23,12 @@ public class EnemyStun : MonoBehaviour
         {
             Debug.Log(stunTime);
             meleeFollow.StunOn();
+            if (particleHit != null)
+            {
+                particleHit.gameObject.SetActive(true);
+                particleHit.loop = true;
+                particleHit.Play();
+            }
             Invoke("UnStun", stunTime);
         }
         else
@@ -59,7 +66,11 @@ public class EnemyStun : MonoBehaviour
     private void UnStun()
     {
         MeleeFollow meleeFollow = GetComponent<MeleeFollow>();
-
+        if (particleHit != null)
+        {
+            particleHit.gameObject.SetActive(false);
+            
+        }
         if (meleeFollow != null)
         {
             meleeFollow.StunOff();

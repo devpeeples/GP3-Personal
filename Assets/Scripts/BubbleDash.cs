@@ -9,6 +9,7 @@ public class BubbleDash : MonoBehaviour
     private Rigidbody rb;
 
     public AudioSource source;
+    public ParticleSystem particleDash; 
 
     //public AudioManager aM;
 
@@ -99,6 +100,13 @@ public class BubbleDash : MonoBehaviour
             source.Play();
         }
 
+
+        if (particleDash != null)
+        {
+            particleDash.gameObject.SetActive(true);
+            particleDash.loop = true;
+            particleDash.Play();
+        }
         //aM.Play("Dashing");
         if (dashCdTime > 0) return;
         else dashCdTime = dashCd;
@@ -115,6 +123,10 @@ public class BubbleDash : MonoBehaviour
     private void ResetDash()
     {
         isDashing = false;
+        if (particleDash != null)
+        {
+            particleDash.gameObject.SetActive(false);
+        }
         isInvincible = false;
     }
     public void Invincibility(float time)
@@ -124,6 +136,7 @@ public class BubbleDash : MonoBehaviour
     }
     private void StopInvincibility()
     {
+        
         isInvincible = false;
     }
 
