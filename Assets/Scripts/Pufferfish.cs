@@ -22,9 +22,6 @@ public class Pufferfish : MonoBehaviour
     {
         pufferfish.SetActive(true);
         //explosion.SetActive(false);
-
-
-        source = GetComponent<AudioSource>();
         collider = GetComponent<Collider>();
     }
 
@@ -73,10 +70,9 @@ public class Pufferfish : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            //source.Play();
+            source.Play();
             Explode();
         }
-
     }
     private void turnOnGoUp()
     {
@@ -90,5 +86,4 @@ public class Pufferfish : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
 }

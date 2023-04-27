@@ -13,7 +13,7 @@ public class Shooter : MonoBehaviour
 
     private GameObject shot;
     public AudioSource source; 
-
+    public AudioClip clip;
 
     private GameObject[] playerList;
     private Transform player;
@@ -42,7 +42,7 @@ public class Shooter : MonoBehaviour
         if(gameObject.active){
             if (source != null)
             {
-                source.Play();
+                source.PlayOneShot(clip);
             }
             //audioManagerObject.GetComponent<AudioManager>().Play("EnemyBullet");
             shot = Instantiate(bullet,transform.position,transform.rotation);
