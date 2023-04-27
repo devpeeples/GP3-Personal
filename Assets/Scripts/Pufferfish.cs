@@ -6,7 +6,7 @@ public class Pufferfish : MonoBehaviour
 {
     public GameObject pufferfish;
     //public GameObject explosion;
-    private AudioSource source;
+    public AudioSource source;
     private Collider collider; 
     public Animation anim;
     public ParticleSystem explosion; 
@@ -73,6 +73,7 @@ public class Pufferfish : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
+            //source.Play();
             Explode();
         }
 
