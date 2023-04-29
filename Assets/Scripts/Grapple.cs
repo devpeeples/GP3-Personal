@@ -33,6 +33,8 @@ public class Grapple : MonoBehaviour
 
     private PlayerHealth playerHealth;
     private bool chargeCheck;
+    private bool grappled;
+    private LineRenderer lineRenderer;
 
     //public AudioManager am;
     public AudioSource source;
@@ -48,11 +50,24 @@ public class Grapple : MonoBehaviour
         //get component for the player health
         canGrapple = false;
         playerHealth = GetComponentInParent<PlayerHealth>();
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     void Start()
     {
         startTime = Time.time;
+        if (Input.GetJoystickNames().Length >= 1)
+        {
+            if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
+            {
+                withController = true;
+            }
+        }
+
+        else
+        {
+            withController = false;
+        }
 
     }
 
@@ -64,22 +79,21 @@ public class Grapple : MonoBehaviour
     // this is going to make sure that both vcontroller and non controller grapple points where it should 
     void FixedUpdate()
     {
+        /*
         if (Input.GetJoystickNames().Length >= 1)
         {
             if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
             {
                 withController = true;
-
             }
-
         }
 
         else
         {
-
             withController = false;
-
         }
+        */
+
 
 
         if (withController)
@@ -119,38 +133,48 @@ public class Grapple : MonoBehaviour
 
         if (Input.GetButton("Grapple") || Input.GetAxisRaw("Joystick Grapple") > 0)
         {
-            chargeCheck = playerHealth.ChargeCheck(grappleCharge);
-            if (chargeCheck)
-            {
-                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
-                {
-                    Debug.Log("Enemy hit");
-                    this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
+            //if (!grappled)
+            //{
 
-                    Debug.DrawRay(transform.position, transform.forward, Color.green);
-                    EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
-                    vectorHit = objectHit.point;
-                    canGrapple = true;
-                    GrappleProcess(vectorHit);
-                    if (enemyStun != null)
+                chargeCheck = playerHealth.ChargeCheck(grappleCharge);
+               // playerHealth.UseCharge(grappleCharge);
+                if (chargeCheck)
+                {
+
+                    if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
                     {
-                        enemyStun.Stun(stunTime);
+                        Debug.Log("Enemy hit");
+                        this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
+
+                        Debug.DrawRay(transform.position, transform.forward, Color.green);
+                        EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
+                        vectorHit = objectHit.point;
+                        canGrapple = true;
+                        GrappleProcess(vectorHit);
+                        if (enemyStun != null)
+                        {
+                            enemyStun.Stun(stunTime);
+                        }
                     }
+                    else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
+                    {
+                        Debug.Log("Grapple hit");
+                        Debug.DrawRay(transform.position, transform.forward, Color.green);
+
+                        vectorHit = objectHit.point;
+                        canGrapple = true;
+
+                        GrappleProcess(vectorHit);
+                    }
+
                 }
-                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
-                {
-                    Debug.Log("Grapple hit");
-                    Debug.DrawRay(transform.position, transform.forward, Color.green);
-
-                    vectorHit = objectHit.point;
-                    canGrapple = true;
-
-                    GrappleProcess(vectorHit);
-                }
-
-            }
+                //grappled = true; 
+           // }
+            
 
         }
+       
+        /*
         if (Input.GetAxisRaw("Joystick Grapple") > 0)
         {
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
@@ -187,6 +211,7 @@ public class Grapple : MonoBehaviour
                 }
             }
         }
+        */
 
     }
 
@@ -206,10 +231,15 @@ public class Grapple : MonoBehaviour
 
         // Smoothly rotate the player towards the target rotation
         player.transform.rotation = Quaternion.Lerp(player.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        lineRenderer.SetPosition(0, player.transform.position);
+        lineRenderer.SetPosition(1, vectorHit);
+        float distanceToGrapplePoint = Vector3.Distance(player.transform.position, vectorHit);
 
-        if (player.transform.position == vectorHit)
+        if (distanceToGrapplePoint > 0.2f)
         {
+            
             canGrapple = false;
+            
         }
     }
 }

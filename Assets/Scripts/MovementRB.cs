@@ -40,6 +40,14 @@ public class MovementRB : MonoBehaviour
 
     }
 
+    public void SetGrappleAnimTrue()
+    {
+        anim.SetBool("isGrappling", true);
+    }
+    public void SetGrappleAnimFalse()
+    {
+        anim.SetBool("isGrappling", false);
+    }
 
     void Update()
     {
