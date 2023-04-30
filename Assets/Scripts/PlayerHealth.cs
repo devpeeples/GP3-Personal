@@ -82,6 +82,7 @@ public class PlayerHealth : MonoBehaviour
             }
             if(hitParticle != null)
             {
+                hitParticle.gameObject.SetActive(true);
                 hitParticle.Play();
 
             }

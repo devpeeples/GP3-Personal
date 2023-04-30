@@ -122,6 +122,12 @@ public class EnemyHealth : MonoBehaviour
             if (isEnemy)
             {
                 DropCurrency();
+                if(deathParticle != null)
+                {
+                    var objectInstance = Instantiate(deathParticle, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                }
+                
+               
             }
 
             if (isBoss)
@@ -138,11 +144,7 @@ public class EnemyHealth : MonoBehaviour
             //delete the enemy from the enemy list 
             // Destroy(gameObject);
             gameObject.SetActive(false);
-            if (deathParticle != null)
-            {
-                var objectInstance = Instantiate(deathParticle, new Vector3(deathParticle.transform.position.x, deathParticle.transform.position.y, deathParticle.transform.position.z), Quaternion.identity);
-                Destroy(objectInstance, 2.0f);
-            }
+            
         }
     }
 

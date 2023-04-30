@@ -59,7 +59,7 @@ public class BubbleDash : MonoBehaviour
             chargeCheck = playerHealth.ChargeCheck(dashCharge);
             if (chargeCheck)
             {
-                playerHealth.UseCharge(dashCharge);
+               
 
                 Dash();
 
@@ -138,15 +138,17 @@ public class BubbleDash : MonoBehaviour
         
         // Use a Raycast to detect collisions in front of the player during the dash
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, orientation.forward, out hit, 2, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(transform.position, orientation.forward, out hit, 10, LayerMask.GetMask("Default")))
         {
-            Debug.Log(" Raycast hit with layer default");
-            Debug.Log("Raycast hit with layer default on object: " + hit.transform.gameObject.name);
+            Debug.Log("in default");
             // If a collision is detected, stop the player's movement
             rb.velocity = Vector3.zero;
+            
             ResetDash();
             return;
         }
+        Debug.Log("Not in default");
+        playerHealth.UseCharge(dashCharge);
         rb.AddForce(forceToApply, ForceMode.Impulse);
         Invoke(nameof(ResetDash), dashDuration);
     }

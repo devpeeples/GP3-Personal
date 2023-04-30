@@ -347,6 +347,7 @@ MonoBehaviour:
     type: 3}
   bubbleDash: {fileID: 3692219798782693856}
   source: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &3692219798782693857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,17 +813,17 @@ PrefabInstance:
     - target: {fileID: 6940562559053679873, guid: 61ed4d26cf634fc4db4574861a5b8002,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6940562559053679873, guid: 61ed4d26cf634fc4db4574861a5b8002,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92
+      value: 1.376
       objectReference: {fileID: 0}
     - target: {fileID: 6940562559053679873, guid: 61ed4d26cf634fc4db4574861a5b8002,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6940562559053679873, guid: 61ed4d26cf634fc4db4574861a5b8002,
         type: 3}
@@ -864,6 +865,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6940562559053679874, guid: 61ed4d26cf634fc4db4574861a5b8002,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 6940562559053679876, guid: 61ed4d26cf634fc4db4574861a5b8002,
         type: 3}
       propertyPath: m_Name
@@ -872,7 +878,7 @@ PrefabInstance:
     - target: {fileID: 6940562559053679876, guid: 61ed4d26cf634fc4db4574861a5b8002,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61ed4d26cf634fc4db4574861a5b8002, type: 3}

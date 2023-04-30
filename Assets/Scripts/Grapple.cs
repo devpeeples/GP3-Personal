@@ -185,6 +185,10 @@ public class Grapple : MonoBehaviour
 
     IEnumerator GrappleProcess()
     {
+        if (source != null)
+        {
+            source.Play();
+        }
 
         journeyLength = Vector3.Distance(this.transform.position, vectorHit);
         fractionOfJourney = speed / journeyLength;
