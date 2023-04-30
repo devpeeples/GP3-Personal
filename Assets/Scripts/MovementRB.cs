@@ -82,4 +82,8 @@ public class MovementRB : MonoBehaviour
             rb.velocity = heading * speed;
         }
     }
+    public void resetSpeed()
+    {
+        speed = setSpeed;
+    }
 }

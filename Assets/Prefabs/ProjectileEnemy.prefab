@@ -100,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.8798609, y: 7.281119, z: 6.1815186}
-  m_Center: {x: 0.10690457, y: 0.8376796, z: -1.4333954}
+  m_Size: {x: 6.03, y: 7.281119, z: 7.08}
+  m_Center: {x: 0.10690457, y: 0.8376796, z: 0.08}
 --- !u!54 &7412252464806356718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,7 +135,6 @@ MonoBehaviour:
   isBoss: 0
   HubVortex: {fileID: 0}
   winSceneVortex: {fileID: 0}
-  yValueOfFloor: 0
   health: 20
   source: {fileID: 0}
   particleHit: {fileID: 0}
@@ -213,7 +212,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 053ce0e62fef50d48bebb86207c110bc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.78
+      value: -1.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 053ce0e62fef50d48bebb86207c110bc,
         type: 3}

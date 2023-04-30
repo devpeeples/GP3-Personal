@@ -116,7 +116,15 @@ public class Grapple : MonoBehaviour
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
+
+                /*
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
+                {
+                    vectorHit = objectHit.point;
+                    canGrapple = true;
+                    StartCoroutine(GrappleProcess());
+                }
+                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
                 {
                     this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
                     EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
@@ -131,12 +139,43 @@ public class Grapple : MonoBehaviour
                         enemyStun.Stun(stunTime);
                     }
                 }
-                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
+                */
+                int grappleLayer = LayerMask.GetMask("Grapple");
+                int enemyLayer = LayerMask.GetMask("Enemy");
+                grappleLayer = (int)Mathf.Log(grappleLayer, 2);
+                enemyLayer = (int)Mathf.Log(enemyLayer, 2);
+
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple|enemy))
                 {
-                    vectorHit = objectHit.point;
-                    canGrapple = true;
-                    StartCoroutine(GrappleProcess());
+                    
+                    if (objectHit.transform.gameObject.layer == grappleLayer)
+                    {
+                        vectorHit = objectHit.point;
+                        canGrapple = true;
+                        StartCoroutine(GrappleProcess());
+                    }
+                    else if (objectHit.transform.gameObject.layer == enemyLayer)
+                    {
+                        this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
+                        EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
+
+                        vectorHit = objectHit.point;
+                        canGrapple = true;
+                        StartCoroutine(GrappleProcess());
+
+                        if (enemyStun != null)
+                        {
+                            enemyStun.Stun(stunTime);
+                        }
+                    }
                 }
+                
+                
+                
+
+
+
+
             }
         }
     }

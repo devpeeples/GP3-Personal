@@ -116,8 +116,7 @@ MonoBehaviour:
   pufferfish: {fileID: 6913242950651188138}
   source: {fileID: 0}
   anim: {fileID: 0}
-  explosion: {fileID: 3305634114549219146, guid: c803917507c4b32448d66406a10cdb6f,
-    type: 3}
+  explosion: {fileID: 7588415231494737642}
   destroyTime: 3
   delayUpTime: 0.5
   range: 25
@@ -329,6 +328,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4673320239999035057, guid: 40a53bd4ab14cb547a7751d9d2154b82,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4673320239999035059, guid: 40a53bd4ab14cb547a7751d9d2154b82,
         type: 3}
       propertyPath: m_Name
@@ -344,6 +348,12 @@ PrefabInstance:
 --- !u!4 &7588415231494737621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4673320239999035022, guid: 40a53bd4ab14cb547a7751d9d2154b82,
+    type: 3}
+  m_PrefabInstance: {fileID: 2996442473714247771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7588415231494737642 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4673320239999035057, guid: 40a53bd4ab14cb547a7751d9d2154b82,
     type: 3}
   m_PrefabInstance: {fileID: 2996442473714247771}
   m_PrefabAsset: {fileID: 0}

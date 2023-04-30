@@ -35,18 +35,7 @@ public class BubbleDash : MonoBehaviour
     private float dashCdTime;
 
 
-    /*
-    
-    public void SaveDash()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-    public void LoadDash()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-        totalCurrency = data.currency;
-    }
-    */
+
 
     // Start is called before the first frame update
     void OnEnable()
@@ -89,7 +78,8 @@ public class BubbleDash : MonoBehaviour
     {
         dashDuration += amount;
     }
-
+    //old dash that cuases goingt hroguh wall collider glitch 
+    /*
     private void Dash()
     {
         // disable player movement? 
@@ -114,6 +104,45 @@ public class BubbleDash : MonoBehaviour
         isDashing = true;
         isInvincible = true;
         Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
+
+        rb.AddForce(forceToApply, ForceMode.Impulse);
+      
+        Invoke(nameof(ResetDash), dashDuration);
+    }
+    */
+    //new dash that hopefully fixes things
+    private void Dash()
+    {
+       
+        if (source != null)
+        {
+            source.Play();
+        }
+
+        if (particleDash != null)
+        {
+            particleDash.gameObject.SetActive(true);
+            particleDash.loop = true;
+            particleDash.Play();
+        }
+
+        //aM.Play("Dashing");
+        if (dashCdTime > 0) return;
+        else dashCdTime = dashCd;
+
+        isDashing = true;
+        isInvincible = true;
+        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
+
+        // Use a Raycast to detect collisions in front of the player during the dash
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, orientation.forward, out hit, forceToApply.magnitude * Time.deltaTime, LayerMask.GetMask("Default")))
+        {
+            // If a collision is detected, stop the player's movement
+            rb.velocity = Vector3.zero;
+            ResetDash();
+            return;
+        }
 
         rb.AddForce(forceToApply, ForceMode.Impulse);
 
