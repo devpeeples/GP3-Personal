@@ -114,11 +114,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pufferfish: {fileID: 6913242950651188138}
+  source: {fileID: 0}
   anim: {fileID: 0}
   explosion: {fileID: 3305634114549219146, guid: c803917507c4b32448d66406a10cdb6f,
     type: 3}
-  destoryTime: 0
+  destroyTime: 3
+  delayUpTime: 0.5
   range: 25
+  upSpeed: 10
 --- !u!95 &9017785781519239145
 Animator:
   serializedVersion: 4
