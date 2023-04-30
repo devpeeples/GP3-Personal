@@ -13064,6 +13064,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 138719108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &509188918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8082265533917063563, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+    type: 3}
+  m_PrefabInstance: {fileID: 1743930091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &511138196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2028459170910632006, guid: 7bccaa78eedffd84c97a2be046ecaa34,
@@ -36919,6 +36925,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 173337909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1609990370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3692219798782693864, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+    type: 3}
+  m_PrefabInstance: {fileID: 1743930091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1611446168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9026376439587009200, guid: 7ca8ddf4303b35249bc152ed266a9b7d,
@@ -40899,6 +40911,11 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 5011542891798710606}
+    - target: {fileID: 3692219798782693857, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3692219798782693859, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
         type: 3}
       propertyPath: m_RootOrder
@@ -41850,6 +41867,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1743930091}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819094223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609990370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d874acc4171185b4b914f841d43962fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: {fileID: 509188918}
+  shieldTime: 5
+  shieldCharge: 2
+  source: {fileID: 5011542891798710606}
+  normalMaterial: {fileID: 2100000, guid: 81326c2ae738ffa40a3ed5ba784a85e8, type: 2}
+  flickerMaterial: {fileID: 2100000, guid: 2dfee4ffec620d24f9b3dda66b1cb872, type: 2}
 --- !u!1 &1820160128 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3692219798471309565, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
