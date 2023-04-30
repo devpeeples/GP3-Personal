@@ -18,7 +18,8 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     public ChargeBar chargeBar;
     public BubbleDash bubbleDash;
-    public AudioSource source; 
+    public AudioSource source;
+    public ParticleSystem hitParticle;
     //public AudioManager audioManager;
 
 
@@ -78,6 +79,11 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth <= 0)
             {
                 SceneManager.LoadScene("LoseScreen");
+            }
+            if(hitParticle != null)
+            {
+                hitParticle.Play();
+
             }
         }
         

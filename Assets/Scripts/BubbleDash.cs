@@ -134,18 +134,20 @@ public class BubbleDash : MonoBehaviour
         isInvincible = true;
         Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
 
+
+        
         // Use a Raycast to detect collisions in front of the player during the dash
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, orientation.forward, out hit, forceToApply.magnitude * Time.deltaTime, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(transform.position, orientation.forward, out hit, 2, LayerMask.GetMask("Default")))
         {
+            Debug.Log(" Raycast hit with layer default");
+            Debug.Log("Raycast hit with layer default on object: " + hit.transform.gameObject.name);
             // If a collision is detected, stop the player's movement
             rb.velocity = Vector3.zero;
             ResetDash();
             return;
         }
-
         rb.AddForce(forceToApply, ForceMode.Impulse);
-
         Invoke(nameof(ResetDash), dashDuration);
     }
 
