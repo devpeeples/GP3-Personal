@@ -25404,7 +25404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777b519cd1e41024eb4e919cb2020799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappleCharge: 3
+  grappleCharge: 1
   grapple:
     serializedVersion: 2
     m_Bits: 128
