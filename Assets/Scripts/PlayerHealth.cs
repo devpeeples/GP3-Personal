@@ -67,6 +67,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!bubbleDash.isInvincible)
         {
+
             if (source != null)
             {
                 source.Play();
@@ -76,6 +77,11 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= damage;
 
             healthBar.SetHealth(currentHealth);
+            //make the player invincible for a few seconds 
+            bubbleDash.Invincibility(1f);
+
+
+
             if (currentHealth <= 0)
             {
                 SceneManager.LoadScene("LoseScreen");
@@ -86,6 +92,8 @@ public class PlayerHealth : MonoBehaviour
                 hitParticle.Play();
 
             }
+
+           
         }
         
     }

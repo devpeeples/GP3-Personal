@@ -116,30 +116,7 @@ public class Grapple : MonoBehaviour
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
-
-                /*
-                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
-                {
-                    vectorHit = objectHit.point;
-                    canGrapple = true;
-                    StartCoroutine(GrappleProcess());
-                }
-                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
-                {
-                    this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
-                    EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
-
-                    vectorHit = objectHit.point;
-                    canGrapple = true;
-                    StartCoroutine(GrappleProcess());
-
-
-                    if (enemyStun != null)
-                    {
-                        enemyStun.Stun(stunTime);
-                    }
-                }
-                */
+                
                 int grappleLayer = LayerMask.GetMask("Grapple");
                 int enemyLayer = LayerMask.GetMask("Enemy");
                 grappleLayer = (int)Mathf.Log(grappleLayer, 2);
@@ -169,10 +146,6 @@ public class Grapple : MonoBehaviour
                         }
                     }
                 }
-                
-                
-                
-
 
 
 

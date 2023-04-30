@@ -3705,6 +3705,54 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5432267830634681482}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1170781319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170781321}
+  - component: {fileID: 1170781320}
+  m_Layer: 0
+  m_Name: AudioControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1170781320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170781319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e23fa48be9421345a8085de0a81bbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 29c957f19bb6d77469431760e6f3e5d6, type: 2}
+  masterSlider: {fileID: 1599487595}
+  musicSlider: {fileID: 1747804198}
+  sfxSlider: {fileID: 1383244770}
+--- !u!4 &1170781321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170781319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -169.23798, y: -6.7005334, z: 711.2725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180115880
 GameObject:
   m_ObjectHideFlags: 0
@@ -6006,6 +6054,11 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 537177865416124299, guid: ca05c65917b28f74dbf8f48230d1f5ab,
+        type: 3}
+      propertyPath: m_Name
+      value: musicVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 537177865684228031, guid: ca05c65917b28f74dbf8f48230d1f5ab,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6189,6 +6242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996210328042019182, guid: dc837e2ee9071d3498bea325e1a463cb,
+        type: 3}
+      propertyPath: m_Name
+      value: SFKVolume
       objectReference: {fileID: 0}
     - target: {fileID: 1996210328211852136, guid: dc837e2ee9071d3498bea325e1a463cb,
         type: 3}
@@ -6488,6 +6546,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432267832294141452, guid: 200d73500048738418401d1b6d810b48,
+        type: 3}
+      propertyPath: m_Name
+      value: MasterVolume
       objectReference: {fileID: 0}
     - target: {fileID: 5432267832441831603, guid: 200d73500048738418401d1b6d810b48,
         type: 3}

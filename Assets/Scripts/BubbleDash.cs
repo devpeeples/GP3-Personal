@@ -78,38 +78,7 @@ public class BubbleDash : MonoBehaviour
     {
         dashDuration += amount;
     }
-    //old dash that cuases goingt hroguh wall collider glitch 
-    /*
-    private void Dash()
-    {
-        // disable player movement? 
-        // check charge amount 
-        //use charge 
-        if (source != null)
-        {
-            source.Play();
-        }
-
-
-        if (particleDash != null)
-        {
-            particleDash.gameObject.SetActive(true);
-            particleDash.loop = true;
-            particleDash.Play();
-        }
-        //aM.Play("Dashing");
-        if (dashCdTime > 0) return;
-        else dashCdTime = dashCd;
-
-        isDashing = true;
-        isInvincible = true;
-        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
-
-        rb.AddForce(forceToApply, ForceMode.Impulse);
-      
-        Invoke(nameof(ResetDash), dashDuration);
-    }
-    */
+    
     //new dash that hopefully fixes things
     private void Dash()
     {
