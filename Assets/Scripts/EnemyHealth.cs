@@ -13,7 +13,6 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject HubVortex;
     public GameObject winSceneVortex;
-    public float yValueOfFloor;
 
     public int health = 100;
 

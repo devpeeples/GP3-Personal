@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3692219797837624903}
-  - component: {fileID: 3692219797837624900}
   - component: {fileID: 3692219797837624899}
   m_Layer: 0
   m_Name: innercube
@@ -34,32 +33,6 @@ Transform:
   m_Father: {fileID: 3692219798782693859}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3692219797837624900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692219797837624902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd216683fe814c14b81fa98641393dcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grappleCharge: 3
-  grapple:
-    serializedVersion: 2
-    m_Bits: 128
-  enemy:
-    serializedVersion: 2
-    m_Bits: 768
-  speed: 2
-  stunInvincibility: 0.25
-  maxDistance: 0
-  rotationSpeed: 0
-  player: {fileID: 3692219798782693859}
-  source: {fileID: 0}
-  stunTime: 1
 --- !u!65 &3692219797837624899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -389,6 +362,8 @@ MonoBehaviour:
   shieldTime: 5
   shieldCharge: 2
   source: {fileID: 0}
+  normalMaterial: {fileID: 0}
+  flickerMaterial: {fileID: 0}
 --- !u!81 &3692219798782693884
 AudioListener:
   m_ObjectHideFlags: 0

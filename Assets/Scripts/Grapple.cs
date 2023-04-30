@@ -17,6 +17,7 @@ public class Grapple : MonoBehaviour
     public float stunInvincibility;
     public int maxDistance;
     public float rotationSpeed;
+    public float grappleResetTime = 2f;
 
 
     private float startTime;
@@ -33,13 +34,13 @@ public class Grapple : MonoBehaviour
 
     private PlayerHealth playerHealth;
     private bool chargeCheck;
-    private bool grappled;
+    private bool grappled = false;
     private LineRenderer lineRenderer;
+    private MovementRB playerMovement; 
 
-    //public AudioManager am;
     public AudioSource source;
 
-    //stun time is what to save
+ 
     public float stunTime;
 
     string[] joystick;
@@ -51,10 +52,12 @@ public class Grapple : MonoBehaviour
         canGrapple = false;
         playerHealth = GetComponentInParent<PlayerHealth>();
         lineRenderer = GetComponent<LineRenderer>();
+        playerMovement = GetComponentInParent<MovementRB>();
     }
 
     void Start()
     {
+        
         startTime = Time.time;
         if (Input.GetJoystickNames().Length >= 1)
         {
@@ -76,29 +79,11 @@ public class Grapple : MonoBehaviour
         stunTime += amount;
     }
 
-    // this is going to make sure that both vcontroller and non controller grapple points where it should 
+  
     void FixedUpdate()
     {
-        /*
-        if (Input.GetJoystickNames().Length >= 1)
-        {
-            if (Input.GetJoystickNames()[0] == "Controller (Xbox One For Windows)")
-            {
-                withController = true;
-            }
-        }
-
-        else
-        {
-            withController = false;
-        }
-        */
-
-
-
         if (withController)
         {
-            //Debug.Log(withController);
             joyVec.x = Input.GetAxis("JoystickGunX");
             joyVec.y = -(Input.GetAxis("JoystickGunY"));
 
@@ -107,6 +92,7 @@ public class Grapple : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(new Vector3(joyVec.x, 0, joyVec.y), Vector3.up);
             }
         }
+
         else if (!withController)
         {
             Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
@@ -125,123 +111,79 @@ public class Grapple : MonoBehaviour
             }
         }
 
-
-
-
-
-
-
-        if (Input.GetButton("Grapple") || Input.GetAxisRaw("Joystick Grapple") > 0)
-        {
-            //if (!grappled)
-            //{
-
-                chargeCheck = playerHealth.ChargeCheck(grappleCharge);
-               // playerHealth.UseCharge(grappleCharge);
-                if (chargeCheck)
-                {
-
-                    if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
-                    {
-                        Debug.Log("Enemy hit");
-                        this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
-
-                        Debug.DrawRay(transform.position, transform.forward, Color.green);
-                        EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
-                        vectorHit = objectHit.point;
-                        canGrapple = true;
-                        GrappleProcess(vectorHit);
-                        if (enemyStun != null)
-                        {
-                            enemyStun.Stun(stunTime);
-                        }
-                    }
-                    else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
-                    {
-                        Debug.Log("Grapple hit");
-                        Debug.DrawRay(transform.position, transform.forward, Color.green);
-
-                        vectorHit = objectHit.point;
-                        canGrapple = true;
-
-                        GrappleProcess(vectorHit);
-                    }
-
-                }
-                //grappled = true; 
-           // }
-            
-
-        }
-       
-        /*
-        if (Input.GetAxisRaw("Joystick Grapple") > 0)
+        if (Input.GetButtonDown("Grapple") || Input.GetAxisRaw("Joystick Grapple") > 0)
         {
             chargeCheck = playerHealth.ChargeCheck(grappleCharge);
             if (chargeCheck)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out objectHit, 500, enemy))
-                {
-
-                    Debug.DrawRay(transform.position, transform.forward, Color.green);
-
-                    vectorHit = objectHit.point;
-                    canGrapple = true;
-
-                    GrappleProcess(vectorHit);
-
-
-                }
-                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, 200, grapple))
+                if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, enemy))
                 {
                     this.GetComponentInParent<BubbleDash>().Invincibility(stunInvincibility);
-
-                    Debug.DrawRay(transform.position, transform.forward, Color.green);
                     EnemyStun enemyStun = objectHit.transform.GetComponent<EnemyStun>();
+
                     vectorHit = objectHit.point;
                     canGrapple = true;
-                    GrappleProcess(vectorHit);
+                    StartCoroutine(GrappleProcess());
+
+
                     if (enemyStun != null)
                     {
-
                         enemyStun.Stun(stunTime);
-
                     }
-
+                }
+                else if (Physics.Raycast(transform.position, transform.forward, out objectHit, maxDistance, grapple))
+                {
+                    vectorHit = objectHit.point;
+                    canGrapple = true;
+                    StartCoroutine(GrappleProcess());
                 }
             }
         }
-        */
-
     }
 
 
-    public void GrappleProcess(Vector3 vectorHit)
+
+
+    IEnumerator GrappleProcess()
     {
+
         journeyLength = Vector3.Distance(this.transform.position, vectorHit);
         fractionOfJourney = speed / journeyLength;
+        playerMovement.SetGrappleAnimTrue();
+        lineRenderer.enabled = true;
 
-        player.transform.position = Vector3.Lerp(player.transform.position, vectorHit, fractionOfJourney);
-
-        // Get the direction that the player needs to face
-        Vector3 direction = (vectorHit - player.transform.position).normalized;
-
-        // Create a rotation that looks in the direction
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-        // Smoothly rotate the player towards the target rotation
-        player.transform.rotation = Quaternion.Lerp(player.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        lineRenderer.SetPosition(0, player.transform.position);
-        lineRenderer.SetPosition(1, vectorHit);
         float distanceToGrapplePoint = Vector3.Distance(player.transform.position, vectorHit);
 
-        if (distanceToGrapplePoint > 0.2f)
+        while (distanceToGrapplePoint > 2f)
         {
             
-            canGrapple = false;
-            
-        }
-    }
-}
 
+            player.transform.position = Vector3.Lerp(player.transform.position, vectorHit, fractionOfJourney);
+
+            // Get the direction that the player needs to face
+            Vector3 direction = (vectorHit - player.transform.position).normalized;
+
+            // Create a rotation that looks in the direction
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            // Smoothly rotate the player towards the target rotation
+            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            lineRenderer.SetPosition(0, player.transform.position);
+            lineRenderer.SetPosition(1, vectorHit);
+            distanceToGrapplePoint = Vector3.Distance(player.transform.position, vectorHit);
+            //canGrapple = false;
+            
+            yield return null;
+
+        }
+        
+
+        playerHealth.UseCharge(grappleCharge);
+        playerMovement.SetGrappleAnimFalse();
+        lineRenderer.enabled = false;
+        
+        yield return new WaitForSeconds(grappleResetTime);
+
+    }  
+}
 

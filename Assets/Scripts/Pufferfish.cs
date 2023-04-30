@@ -8,7 +8,7 @@ public class Pufferfish : MonoBehaviour
     //public GameObject explosion;
     public AudioSource source;
     private Collider collider; 
-    public Animation anim;
+    public Animator anim;
     public ParticleSystem explosion; 
     public float destroyTime;
     public float delayUpTime; 
@@ -23,6 +23,7 @@ public class Pufferfish : MonoBehaviour
         pufferfish.SetActive(true);
         //explosion.SetActive(false);
         collider = GetComponent<Collider>();
+        anim = GetComponent<Animator>();
     }
 
     public void Explode()
@@ -37,7 +38,7 @@ public class Pufferfish : MonoBehaviour
         }
         if (anim != null)
         {
-            //anim.Play();
+            anim.SetBool("isExplode", true);
             //anim play isnt working idk why 
         }
 
