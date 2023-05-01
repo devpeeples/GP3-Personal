@@ -44,6 +44,11 @@ public class PlayerHealth : MonoBehaviour
         currentCharge = maxCharge;
         chargeBar.SetMaxCharge(maxCharge);
     }
+    void Update()
+    {
+        chargeBar.SetCharge(currentCharge);
+        healthBar.SetMaxHealth(maxHealth);
+    }
     public void AddHealth(int healthAdd)
     {
         if ((currentHealth + healthAdd) <= maxHealth)
@@ -118,6 +123,7 @@ public class PlayerHealth : MonoBehaviour
 
             // what else would you want to do if you dont add charge?
         }
+       
 
     }
     public void AddMaxCharge(int maxAdd)
