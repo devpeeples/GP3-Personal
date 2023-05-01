@@ -106,7 +106,8 @@ public class BubbleDash : MonoBehaviour
 
         
         // Use a Raycast to detect collisions in front of the player during the dash
-        RaycastHit hit;
+       // RaycastHit hit;
+        /*
         if (Physics.Raycast(transform.position, orientation.forward, out hit, 10, LayerMask.GetMask("Default")))
         {
             Debug.Log("in default");
@@ -116,10 +117,18 @@ public class BubbleDash : MonoBehaviour
             ResetDash();
             return;
         }
-        Debug.Log("Not in default");
+        */
         playerHealth.UseCharge(dashCharge);
         rb.AddForce(forceToApply, ForceMode.Impulse);
         Invoke(nameof(ResetDash), dashDuration);
+    }
+    void OnCollisionEnter()
+    {
+        Debug.Log("Hit");
+        rb.velocity = Vector3.zero;
+
+        ResetDash();
+        return;
     }
 
     private void ResetDash()
