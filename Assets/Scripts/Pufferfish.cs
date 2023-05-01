@@ -33,11 +33,13 @@ public class Pufferfish : MonoBehaviour
         //explosion.SetActive(true);
         if (explosion != null)
         {
+            Debug.Log("Explode");
             explosion.gameObject.SetActive(true);
             explosion.Play();
         }
         if (anim != null)
         {
+
             anim.SetBool("isExplode", true);
             //anim play isnt working idk why 
         }

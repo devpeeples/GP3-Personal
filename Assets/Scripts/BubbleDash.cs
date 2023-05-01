@@ -142,6 +142,7 @@ public class BubbleDash : MonoBehaviour
     }
     public void Invincibility(float time)
     {
+        Debug.Log("Invincible for: " + time);
         isInvincible = true;
         Invoke(nameof(StopInvincibility), time);
     }

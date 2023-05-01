@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         chargeBar.SetCharge(currentCharge);
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currentHealth);
     }
     public void AddHealth(int healthAdd)
     {
@@ -83,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
             healthBar.SetHealth(currentHealth);
             //make the player invincible for a few seconds 
-            bubbleDash.Invincibility(1f);
+            bubbleDash.Invincibility(2f);
 
 
 
