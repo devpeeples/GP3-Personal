@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09766902, g: 0.4055248, b: 0.6327365, a: 1}
+  m_IndirectSpecularColor: {r: 0.0976692, g: 0.4055252, b: 0.63273734, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10295,7 +10295,7 @@ PrefabInstance:
     - target: {fileID: 3831136605150573198, guid: cf2ba5526be2de74581661d5aa47cdfd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -49.999573
+      value: -49.99951
       objectReference: {fileID: 0}
     - target: {fileID: 3831136605244279625, guid: cf2ba5526be2de74581661d5aa47cdfd,
         type: 3}
@@ -11774,7 +11774,7 @@ PrefabInstance:
         type: 3}
       propertyPath: source
       value: 
-      objectReference: {fileID: 306455954474414393}
+      objectReference: {fileID: 5011542893016562033}
     - target: {fileID: 9113333245619956623, guid: 372970e62958ef04b83bb3ea12b202f9,
         type: 3}
       propertyPath: m_RootOrder
@@ -15421,26 +15421,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &605822263 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3692219798951108134, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
-    type: 3}
-  m_PrefabInstance: {fileID: 1743930091}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &605822267
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605822263}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.59
-  m_Height: 3.27
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &612104840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8840947056856509050, guid: 562b743f88ccaae4d8c3cc7adedddc52,
@@ -44186,7 +44166,7 @@ PrefabInstance:
     - target: {fileID: 4076490059476786582, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4339331235392856820, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
         type: 3}
@@ -44346,6 +44326,16 @@ PrefabInstance:
     - target: {fileID: 7356525091103623285, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
         type: 3}
       propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716867438579733128, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+        type: 3}
+      propertyPath: m_Height
+      value: 3.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716867438579733128, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
+        type: 3}
+      propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8082265533917063563, guid: 7ea8f416b1cc4d54f84c38c1b6e02374,
